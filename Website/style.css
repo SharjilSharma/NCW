@@ -168,18 +168,14 @@ body.font-large {
 
 .main-nav a {
     text-decoration: none;
-    color: var(--text-light);
+    color: var(--text-light) !important;
     font-weight: 500;
     padding: 0.5rem 0;
     position: relative;
 }
 
 .main-nav a.active, .main-nav a:hover {
-    color: var(--text-light);
-}
-
-.main-nav a.active, .main-nav a:hover {
-    color: var(--text-light);
+    color: var(--text-light) !important;
 }
 
 .main-nav a.active::after {
