@@ -37,6 +37,10 @@
     <main id="main">
         <section class="page-header">
             <div class="container">
+                <a href="indian-constitution-women.html" class="back-btn">
+                    <span class="material-icons-outlined">arrow_back</span>
+                    Back to Constitution & Women
+                </a>
                 <h1>Panchayati Raj Institutions & Urban Local Bodies</h1>
                 <p>Constitutional provisions for women's participation in local governance</p>
             </div>
@@ -67,9 +71,74 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Government of India. All rights reserved.</p>
-            <a href="../indian-constitution-women.html" class="back-link">← Back to Constitution & Women</a>
         </div>
+        
+        <button class="chat-bot">
+            <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
+            <span class="material-icons-outlined">support_agent</span>
+        </button>
+        <button class="accessibility-toggle">
+            <span class="material-icons-outlined">accessibility_new</span>
+        </button>
+        <button class="color-toggle" onclick="toggleTheme()">
+            <span class="material-icons-outlined">contrast</span>
+        </button>
     </footer>
-    <script src="./script.js"></script>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script>
+        function translatePage(lang) {
+            document.querySelectorAll('.translate-btn').forEach(btn => {
+                btn.style.opacity = '0.7';
+                btn.style.transform = 'scale(1)';
+            });
+            
+            const activeBtn = document.querySelector('.translate-btn-' + lang);
+            if (activeBtn) {
+                activeBtn.style.opacity = '1';
+                activeBtn.style.transform = 'scale(1.1)';
+            }
+            
+            localStorage.setItem('selectedLanguage', lang);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+            translatePage(savedLang);
+            
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+        });
+        
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
+        }
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>

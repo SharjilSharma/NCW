@@ -6,9 +6,29 @@
     <title>Empower Hub</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <script src="./script.js" defer></script>
-    <script src="auto-translate.js" defer></script>
-    <script src="translate-buttons.js" defer></script>
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        function translatePage(lang) {
+            document.querySelectorAll('.translate-btn').forEach(btn => {
+                btn.style.opacity = '0.7';
+                btn.style.transform = 'scale(1)';
+            });
+            const activeBtn = document.querySelector('.translate-btn-' + lang);
+            if (activeBtn) {
+                activeBtn.style.opacity = '1';
+                activeBtn.style.transform = 'scale(1.1)';
+            }
+            if (typeof changeLanguage === 'function') {
+                changeLanguage(lang);
+            }
+            localStorage.setItem('selectedLanguage', lang);
+        }
+    </script>
 </head>
 <body>
 <!-- yo -->
@@ -16,18 +36,23 @@
         <div class="container">
             <div class="top-left">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png" alt="India Flag" class="flag">
-                <span>Government of India</span>
+                <span data-translate="Government of India">Government of India</span>
             </div>
             <div class="top-right">
-                <a href="#services" class="skip-link">Skip to Main Content</a>
+                <a href="#services" class="skip-link" data-translate="Skip to Main Content">Skip to Main Content</a>
                 <div class="text-size">
                     <button onclick="changeFontSize('decrease')">-A</button>
                     <button class="active" onclick="changeFontSize('reset')">A</button>
                     <button onclick="changeFontSize('increase')">A+</button>
                 </div>
-                <div class="language">
+                <div class="language" onclick="toggleLanguageDropdown()">
                     <span class="material-icons-outlined">language</span>
-                    <span>Language</span>
+                    <span id="current-language">English</span>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" onclick="changeLanguage('en'); return false;">English</a>
+                        <a href="#" onclick="changeLanguage('hi'); return false;">हिंदी</a>
+                        <a href="#" onclick="changeLanguage('ur'); return false;">اردو</a>
+                    </div>
                 </div>
                 <div class="more-links">
                     <span class="material-icons-outlined">more_vert</span>
@@ -41,19 +66,19 @@
         <div class="container">
             <a href="#" class="logo">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/45px-Emblem_of_India.svg.png" alt="Govt Emblem" class="emblem">
-                <h1>Empower Hub</h1>
+                <h1 data-translate="Empower Hub">Empower Hub</h1>
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#popular-cases">Popular Cases</a></li>
-                    <li><a href="#how-it-works">How it Works</a></li>
+                    <li><a href="#main" onclick="scrollToSection('main')" data-translate="Home">Home</a></li>
+                    <li><a href="#about" onclick="scrollToSection('about')" data-translate="About Us">About Us</a></li>
+                    <li><a href="#services" onclick="scrollToSection('services')" data-translate="Services">Services</a></li>
+                    <li><a href="#popular-cases" onclick="scrollToSection('popular-cases')" data-translate="Popular Cases">Popular Cases</a></li>
+                    <li><a href="#how-it-works" onclick="scrollToSection('how-it-works')" data-translate="How it Works">How it Works</a></li>
                 </ul>
             </nav>
             <div class="header-right">
-                <a href="#" class="cta-button" data-translate="CTA">CTA</a>
+                <a href="helpline.html" class="cta-button" data-translate="Quick Assist">Quick Assist</a>
                 <div class="search-container">
                     <input type="text" class="search-input" placeholder="Search..." data-translate-placeholder="Search...">
                     <button class="search-btn" onclick="toggleSearch()">
@@ -70,16 +95,16 @@
                 </div>
             <div class="container hero-content">
                 <div class="hero-text">
-                    <h2>Access Your</h2>
-                    <h1>Rights</h1>
-                    <h2>Secure Your</h2>
-                    <h1>Future</h1>
+                    <h2 data-translate="Access Your">Access Your</h2>
+                    <h1 data-translate="Rights">Rights</h1>
+                    <h2 data-translate="Secure Your">Secure Your</h2>
+                    <h1 data-translate="Future">Future</h1>
                 </div>
                 
                 <div class="info-box">
                     <div class="info-tabs">
-                        <button class="tab-link active" data-tab="whats-new">What's new</button>
-                        <button class="tab-link" data-tab="important-info">Important information</button>
+                        <button class="tab-link active" data-tab="whats-new" data-translate="What's new">What's new</button>
+                        <button class="tab-link" data-tab="important-info" data-translate="Important information">Important information</button>
                     </div>
                     
                     <div id="whats-new" class="tab-content active">
@@ -134,7 +159,7 @@
                 </div>
             </div>
             <div class="explore-btn-container">
-                <button class="explore-btn" data-translate="Explore">Explore</button>
+                <button class="explore-btn" data-translate="Explore" onclick="scrollToServices()">Explore</button>
             </div>
         </section>
     </main>
@@ -196,42 +221,42 @@
                     </div>
                     <span class="material-icons-outlined">chevron_right</span>
                 </a>
-                <a href="women-rights-bnss.html" class="category-card">
+                <a href="bharatiya-nyaya-suraksha.html" class="category-card">
                     <div class="card-content">
                         <span class="material-icons-outlined icon">balance</span>
                         <span>Women Rights under Bharatiya Nyaya Suraksha Sanhita</span>
                     </div>
                     <span class="material-icons-outlined">chevron_right</span>
                 </a>
-                <a href="sexual-offences-women.html" class="category-card">
+                <a href="sexual-offences.html" class="category-card">
                     <div class="card-content">
                         <span class="material-icons-outlined icon">security</span>
                         <span>Sexual Offences Against Women</span>
                     </div>
                     <span class="material-icons-outlined">chevron_right</span>
                 </a>
-                <a href="#" class="category-card">
+                <a href="marriage-offences.html" class="category-card">
                     <div class="card-content">
                         <span class="material-icons-outlined icon">volunteer_activism</span>
                         <span>Offences Related to Marriage</span>
                     </div>
                     <span class="material-icons-outlined">chevron_right</span>
                 </a>
-                <a href="#" class="category-card">
+                <a href="cyber-crimes.html" class="category-card">
                     <div class="card-content">
                         <span class="material-icons-outlined icon">computer</span>
                         <span>Cyber Crimes Against Women</span>
                     </div>
                     <span class="material-icons-outlined">chevron_right</span>
                 </a>
-                <a href="#" class="category-card">
+                <a href="other-offences.html" class="category-card">
                     <div class="card-content">
                         <span class="material-icons-outlined icon">report</span>
                         <span>Other Offences Relating to Women</span>
                     </div>
                     <span class="material-icons-outlined">chevron_right</span>
                 </a>
-                <a href="#" class="category-card">
+                <a href="others.html" class="category-card">
                     <div class="card-content">
                         <span class="material-icons-outlined icon">more_horiz</span>
                         <span>Others</span>
@@ -578,9 +603,32 @@
             <div class="container">
                 <div class="support-text">
                     <h2>Need Support?</h2>
-                    <p>Reach out to us and we will get back to you</p>
+                    <p>Get immediate help through our 24x7 women helpline numbers and support services</p>
+                    <div class="emergency-numbers">
+                        <div class="emergency-item">
+                            <span class="material-icons-outlined">phone</span>
+                            <div>
+                                <strong>Emergency: 112</strong>
+                                <p>Police, Fire, Ambulance</p>
+                            </div>
+                        </div>
+                        <div class="emergency-item">
+                            <span class="material-icons-outlined">support_agent</span>
+                            <div>
+                                <strong>Women Helpline: 181</strong>
+                                <p>National helpline for women in distress</p>
+                            </div>
+                        </div>
+                        <div class="emergency-item">
+                            <span class="material-icons-outlined">security</span>
+                            <div>
+                                <strong>NCW Helpline: 7827170170</strong>
+                                <p>24x7 NCW direct helpline</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a href="#" class="btn btn-light-outline">
+                <a href="helpline.html" class="btn btn-light-outline">
                     <span>Get in touch</span>
                     <span class="material-icons-outlined">arrow_forward</span>
                 </a>
@@ -663,64 +711,59 @@
         <button class="accessibility-toggle">
             <span class="material-icons-outlined">accessibility_new</span>
         </button>
-         <button class="color-toggle">
+         <button class="color-toggle" onclick="toggleTheme()">
             <span class="material-icons-outlined">contrast</span>
         </button>
 
     </footer>
 
-    <!-- Case Detail Modal -->
-    <div id="case-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeCaseModal()">
-                <span class="material-icons-outlined">close</span>
-            </button>
-            <div class="modal-body">
-                <div class="modal-header">
-                    <h2 id="modal-case-title">Case Title</h2>
-                    <span id="modal-case-category" class="modal-category">Category</span>
-                </div>
-                <div class="modal-sections">
-                    <section class="modal-section">
-                        <h3>Case Summary</h3>
-                        <p id="modal-summary">Case summary content will be loaded here...</p>
-                    </section>
-                    <section class="modal-section">
-                        <h3>Background</h3>
-                        <p id="modal-background">Background information will be loaded here...</p>
-                    </section>
-                    <section class="modal-section">
-                        <h3>Problem Faced</h3>
-                        <p id="modal-suffering">Details about the suffering will be loaded here...</p>
-                    </section>
-                    <section class="modal-section">
-                        <h3>Actions Taken</h3>
-                        <p id="modal-action">Actions taken will be loaded here...</p>
-                    </section>
-                    <section class="modal-section">
-                        <h3>Court Judgement</h3>
-                        <p id="modal-judgment">Court judgment details will be loaded here...</p>
-                    </section>
-                    <section class="modal-section">
-                        <h3>How This Case Can Help You Today</h3>
-                        <p id="modal-impact">Impact on women's rights will be loaded here...</p>
-                    </section>
-                </div>
-            </div>
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
         </div>
+        <div class="translate-label">Language</div>
     </div>
 
+
     <script>
-        function changeFontSize(size) {
-            document.querySelectorAll('.text-size button').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        // Prevent font size glitch on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme immediately
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
             
+            // Load saved language after script.js loads
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
+        });
+        
+        function toggleTheme() {
             const body = document.body;
-            body.classList.remove('font-small', 'font-normal', 'font-large');
-            body.classList.add('font-' + size);
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
         }
     </script>
-    <script src="./script.js"></script>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

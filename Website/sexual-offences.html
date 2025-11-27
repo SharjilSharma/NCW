@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundamental Rights of Women - Empower Hub</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./content-styles.css">
+    <title>Sexual Offences Against Women - Empower Hub</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
@@ -27,8 +26,8 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="../indian-constitution-women.html">Constitution & Women</a></li>
-                    <li><a href="#" class="active">Fundamental Rights</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="#" class="active">Sexual Offences</a></li>
                 </ul>
             </nav>
         </div>
@@ -37,61 +36,57 @@
     <main id="main">
         <section class="page-header">
             <div class="container">
-                <a href="indian-constitution-women.html" class="back-btn">
+                <a href="index.html" class="back-btn">
                     <span class="material-icons-outlined">arrow_back</span>
-                    Back to Constitution & Women
+                    Back to Home
                 </a>
-                <h1>Fundamental Rights of Women</h1>
-                <p>Constitutional articles that guarantee equality and protection for women</p>
+                <h1>Sexual Offences Against Women</h1>
+                <p>Legal provisions and protections against sexual crimes under Indian law</p>
             </div>
         </section>
 
         <section class="content-section">
             <div class="container">
                 <div class="articles-grid">
-                    <a href="article-14.html" class="article-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">balance</span>
+                    <div class="article-card">
+                        <h3>Rape and Sexual Assault</h3>
+                        <p>Comprehensive legal framework addressing rape, sexual assault, and related offences with stringent punishments and victim protection measures.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Definition and Types</a>
+                            <a href="#" class="sub-link">Punishment Provisions</a>
+                            <a href="#" class="sub-link">Victim Protection</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Article 14 - Equality before Law</h3>
-                            <p>The State shall not deny to any person equality before the law or the equal protection of the laws within the territory of India.</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
 
-                    <a href="article-15.html" class="article-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">block</span>
+                    <div class="article-card">
+                        <h3>Sexual Harassment</h3>
+                        <p>Laws protecting women from sexual harassment at workplace and public spaces, including the POSH Act and related provisions.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Workplace Harassment</a>
+                            <a href="#" class="sub-link">Public Space Harassment</a>
+                            <a href="#" class="sub-link">Complaint Mechanisms</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Article 15 - Prohibition of Discrimination</h3>
-                            <p>The State shall not discriminate against any citizen on grounds only of religion, race, caste, sex, place of birth or any of them.</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
 
-                    <a href="article-16.html" class="article-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">work</span>
+                    <div class="article-card">
+                        <h3>Stalking and Voyeurism</h3>
+                        <p>Legal provisions against stalking, voyeurism, and invasion of privacy with focus on digital and physical harassment.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Physical Stalking</a>
+                            <a href="#" class="sub-link">Cyber Stalking</a>
+                            <a href="#" class="sub-link">Voyeurism Laws</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Article 16 - Equal Opportunity in Employment</h3>
-                            <p>There shall be equality of opportunity for all citizens in matters relating to employment or appointment to any office under the State.</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
 
-                    <a href="article-21.html" class="article-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">security</span>
+                    <div class="article-card">
+                        <h3>Acid Attacks</h3>
+                        <p>Specific laws addressing acid attacks on women, including prevention, punishment, and victim compensation measures.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Prevention Measures</a>
+                            <a href="#" class="sub-link">Legal Punishment</a>
+                            <a href="#" class="sub-link">Victim Compensation</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Article 21 - Right to Life and Personal Liberty</h3>
-                            <p>No person shall be deprived of his life or personal liberty except according to procedure established by law.</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -136,18 +131,27 @@
                 activeBtn.style.transform = 'scale(1.1)';
             }
             
+            if (typeof changeLanguage === 'function') {
+                changeLanguage(lang);
+            }
+            
             localStorage.setItem('selectedLanguage', lang);
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-            translatePage(savedLang);
-            
             // Load saved theme
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
             }
+            
+            // Load saved language
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
         });
         
         function toggleTheme() {

@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundamental Rights of Women - Empower Hub</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./content-styles.css">
+    <title>Cyber Crimes Against Women - Empower Hub</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
@@ -27,8 +26,8 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="../indian-constitution-women.html">Constitution & Women</a></li>
-                    <li><a href="#" class="active">Fundamental Rights</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="#" class="active">Cyber Crimes</a></li>
                 </ul>
             </nav>
         </div>
@@ -37,61 +36,63 @@
     <main id="main">
         <section class="page-header">
             <div class="container">
-                <a href="indian-constitution-women.html" class="back-btn">
+                <a href="index.html" class="back-btn">
                     <span class="material-icons-outlined">arrow_back</span>
-                    Back to Constitution & Women
+                    Back to Home
                 </a>
-                <h1>Fundamental Rights of Women</h1>
-                <p>Constitutional articles that guarantee equality and protection for women</p>
+                <h1>Cyber Crimes Against Women</h1>
+                <p>Digital safety and legal protection against online crimes targeting women</p>
             </div>
         </section>
+
+        <div class="emergency-highlight" style="max-width: 500px; margin: 30px auto; text-align: center; border-radius: 8px;">
+            <h3>⚠️ Report Cyber Crime</h3>
+            <p><strong>Cyber Crime Helpline:</strong> <span class="helpline-number">1930</span></p>
+            <p><strong>Online Portal:</strong> <a href="https://cybercrime.gov.in" target="_blank" style="color: #1976d2;">cybercrime.gov.in</a></p>
+        </div>
 
         <section class="content-section">
             <div class="container">
                 <div class="articles-grid">
-                    <a href="article-14.html" class="article-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">balance</span>
+                    <div class="article-card">
+                        <h3>Online Harassment & Trolling</h3>
+                        <p>Legal provisions against online harassment, trolling, and cyberbullying targeting women on social media and digital platforms.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Social Media Harassment</a>
+                            <a href="#" class="sub-link">Cyberbullying Laws</a>
+                            <a href="#" class="sub-link">Reporting Mechanisms</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Article 14 - Equality before Law</h3>
-                            <p>The State shall not deny to any person equality before the law or the equal protection of the laws within the territory of India.</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
 
-                    <a href="article-15.html" class="article-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">block</span>
+                    <div class="article-card">
+                        <h3>Morphing & Deepfakes</h3>
+                        <p>Protection against image morphing, deepfake creation, and non-consensual sharing of manipulated content.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Image Morphing Laws</a>
+                            <a href="#" class="sub-link">Deepfake Regulations</a>
+                            <a href="#" class="sub-link">Content Removal</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Article 15 - Prohibition of Discrimination</h3>
-                            <p>The State shall not discriminate against any citizen on grounds only of religion, race, caste, sex, place of birth or any of them.</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
 
-                    <a href="article-16.html" class="article-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">work</span>
+                    <div class="article-card">
+                        <h3>Revenge Porn & Sextortion</h3>
+                        <p>Legal framework addressing non-consensual sharing of intimate images and sextortion crimes.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Revenge Porn Laws</a>
+                            <a href="#" class="sub-link">Sextortion Prevention</a>
+                            <a href="#" class="sub-link">Victim Support</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Article 16 - Equal Opportunity in Employment</h3>
-                            <p>There shall be equality of opportunity for all citizens in matters relating to employment or appointment to any office under the State.</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
 
-                    <a href="article-21.html" class="article-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">security</span>
+                    <div class="article-card">
+                        <h3>Digital Financial Fraud</h3>
+                        <p>Protection against online financial fraud, identity theft, and digital scams targeting women.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Online Banking Fraud</a>
+                            <a href="#" class="sub-link">Identity Theft</a>
+                            <a href="#" class="sub-link">Digital Scam Prevention</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Article 21 - Right to Life and Personal Liberty</h3>
-                            <p>No person shall be deprived of his life or personal liberty except according to procedure established by law.</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -136,18 +137,27 @@
                 activeBtn.style.transform = 'scale(1.1)';
             }
             
+            if (typeof changeLanguage === 'function') {
+                changeLanguage(lang);
+            }
+            
             localStorage.setItem('selectedLanguage', lang);
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-            translatePage(savedLang);
-            
             // Load saved theme
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
             }
+            
+            // Load saved language
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
         });
         
         function toggleTheme() {

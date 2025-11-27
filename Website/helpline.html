@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Assist - Women Helpline Numbers</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header {
+            background: #0f0a40;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1976d2;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 30px 0;
+        }
+        
+        .back-btn:hover {
+            background: #1565c0;
+        }
+        
+        .helpline-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .helpline-card h2 {
+            color: #d32f2f;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .helpline-card h3 {
+            color: #1976d2;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+        }
+        
+        .helpline-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .helpline-table th,
+        .helpline-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .helpline-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+        
+        .helpline-number {
+            font-weight: bold;
+            color: #d32f2f;
+            font-size: 18px;
+        }
+        
+        .contact-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .contact-info h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+        
+        .emergency-highlight {
+            background: #ffebee;
+            border-left: 4px solid #d32f2f;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .footer {
+            background: #0f0a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+        /* Floating Translate Buttons */
+        .floating-translate-buttons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .translate-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        
+        .translate-btn {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .translate-btn-en {
+            background: linear-gradient(135deg, #1976d2, #42a5f5);
+            color: white;
+        }
+        
+        .translate-btn-hi {
+            background: linear-gradient(135deg, #ff9800, #ffb74d);
+            color: white;
+        }
+        
+        .translate-btn-ur {
+            background: linear-gradient(135deg, #4caf50, #81c784);
+            color: white;
+        }
+        
+        .translate-btn:hover {
+            transform: scale(1.1) !important;
+            opacity: 1 !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .translate-label {
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .helpline-card {
+                padding: 20px;
+            }
+            
+            .helpline-table {
+                font-size: 14px;
+            }
+            
+            .helpline-table th,
+            .helpline-table td {
+                padding: 8px;
+            }
+            
+            .floating-translate-buttons {
+                right: 10px;
+                top: auto;
+                bottom: 100px;
+                transform: none;
+            }
+            
+            .translate-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/45px-Emblem_of_India.svg.png" alt="Govt Emblem">
+                </div>
+                <h1>Quick Assist - Women Helpline Numbers</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-btn">
+                <span class="material-icons-outlined">arrow_back</span>
+                Back to Home
+            </a>
+
+            <div class="helpline-card">
+                <h2>🚨 Essential Helplines & Contacts (All India)</h2>
+                <div class="emergency-highlight">
+                    <p><strong>For immediate emergency assistance, dial these numbers 24x7:</strong></p>
+                </div>
+
+                <table class="helpline-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Number(s)</th>
+                            <th>Availability</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Emergency Response</td>
+                            <td class="helpline-number">112</td>
+                            <td>24x7</td>
+                            <td>Pan-India single number for Police, Fire, and Health emergencies</td>
+                        </tr>
+                        <tr>
+                            <td>National Women Helpline</td>
+                            <td class="helpline-number">181</td>
+                            <td>24x7</td>
+                            <td>A national-level helpline number for women in distress</td>
+                        </tr>
+                        <tr>
+                            <td>Women in Distress</td>
+                            <td class="helpline-number">1091</td>
+                            <td>24x7</td>
+                            <td>Specific helpline for women in distress, managed by local police</td>
+                        </tr>
+                        <tr>
+                            <td>NCW 24x7 Women Helpline</td>
+                            <td class="helpline-number">7827170170</td>
+                            <td>24x7</td>
+                            <td>Direct helpline number for the National Commission for Women</td>
+                        </tr>
+                        <tr>
+                            <td>NCW Short-Code Helpline</td>
+                            <td class="helpline-number">14490</td>
+                            <td>24x7</td>
+                            <td>New short-code number launched by NCW for quicker access</td>
+                        </tr>
+                        <tr>
+                            <td>Cyber Crime Helpline</td>
+                            <td class="helpline-number">1930</td>
+                            <td>24x7</td>
+                            <td>For reporting cyber-related crimes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="helpline-card">
+                <h2>🏛️ National Commission for Women (NCW)</h2>
+                
+                <div class="contact-info">
+                    <h4>NCW Office Address:</h4>
+                    <p>Plot-21, Jasola Institutional Area, New Delhi – 110025, India</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>EPABX Numbers (General Enquiries):</h4>
+                    <p class="helpline-number">011-26942369, 26944740, 26944754, 26944805</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Complaint-Related Queries (Working Days, 9:00 AM - 5:30 PM):</h4>
+                    <p class="helpline-number">011-26944880 or 011-26940148</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Email Contacts:</h4>
+                    <p><strong>General Email:</strong> ncw@nic.in</p>
+                    <p><strong>Complaint & Investigation Cell:</strong> complaintcell-ncw@nic.in</p>
+                </div>
+            </div>
+
+            <div class="helpline-card">
+                <h2>⚖️ National Human Rights Commission (NHRC)</h2>
+                
+                <div class="contact-info">
+                    <h4>Address:</h4>
+                    <p>Manav Adhikar Bhavan, C-Block, GPO Complex, INA, New Delhi-110023, India</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Help Line:</h4>
+                    <p class="helpline-number">14433</p>
+                    <p>NHRC's dedicated help line number</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>General/Complaint Status:</h4>
+                    <p class="helpline-number">+91-11-24651330, +91-11-24663333</p>
+                    <p>General queries and complaint status</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Email Contacts:</h4>
+                    <p><strong>Complaints:</strong> complaint.nhrc@nic.in</p>
+                    <p><strong>General:</strong> cr.nhrc@nic.in</p>
+                </div>
+            </div>
+
+            <div class="helpline-card">
+                <h2>💼 Ministry of Social Justice and Empowerment</h2>
+                <p>The MoSJE focuses on the welfare of marginalized sections, including disabled, elderly, drug abusers, and backward classes.</p>
+                
+                <div class="contact-info">
+                    <h4>Union Minister's Office:</h4>
+                    <p class="helpline-number">+91-11-23381001, 23381390</p>
+                    <p><strong>Email:</strong> min-sje@nic.in</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Secretary:</h4>
+                    <p class="helpline-number">+91-11-23382683, 23389184</p>
+                    <p><strong>Email:</strong> secywel@nic.in</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Website:</h4>
+                    <p><a href="https://socialjustice.gov.in" target="_blank" style="color: #1976d2;">socialjustice.gov.in</a></p>
+                </div>
+            </div>
+
+            <div class="helpline-card">
+                <h2>🚔 Police Station & District Women Police Station</h2>
+                <p>For police station contact, the standard emergency number is <span class="helpline-number">112</span>.</p>
+                <p>Women in Distress Helpline: <span class="helpline-number">1091</span></p>
+                
+                <h3>Example Local Contacts (Ghaziabad, UP):</h3>
+                <table class="helpline-table">
+                    <thead>
+                        <tr>
+                            <th>Station</th>
+                            <th>Landline</th>
+                            <th>CUG Mobile</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mahila Thana (Women Police Station)</td>
+                            <td class="helpline-number">0120-27003909</td>
+                            <td class="helpline-number">9643322933</td>
+                        </tr>
+                        <tr>
+                            <td>Kotwali Police Station</td>
+                            <td class="helpline-number">0120-27320889</td>
+                            <td class="helpline-number">9643322917</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="emergency-highlight">
+                    <p><strong>Note:</strong> For local police station details in your area, refer to the official state/district police website.</p>
+                </div>
+            </div>
+
+            <div class="helpline-card">
+                <h2>🌐 NCW Official Portals</h2>
+                
+                <div class="contact-info">
+                    <h4>NCW Official Complaint Application Portal:</h4>
+                    <p><a href="https://ncwapps.nic.in/" target="_blank" style="color: #1976d2; font-weight: bold;">https://ncwapps.nic.in/</a></p>
+                    <p>Used for online complaint registration, tracking status, and viewing instructions</p>
+                </div>
+
+                <div class="contact-info">
+                    <h4>NCW Official Website:</h4>
+                    <p><a href="https://www.ncw.gov.in/" target="_blank" style="color: #1976d2; font-weight: bold;">https://www.ncw.gov.in/</a></p>
+                    <p>Main website for general information, procedures, and reports</p>
+                </div>
+            </div>
+
+            <div class="emergency-highlight">
+                <h3>⚠️ Important Note:</h3>
+                <p>In case of immediate danger or emergency, always call <strong class="helpline-number">112</strong> first. These helpline numbers are available 24x7 for your safety and assistance.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Copyright © 2024 - All Rights Reserved - Empower Hub</p>
+        </div>
+    </footer>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function translatePage(lang) {
+            document.querySelectorAll('.translate-btn').forEach(btn => {
+                btn.style.opacity = '0.7';
+                btn.style.transform = 'scale(1)';
+            });
+            
+            const activeBtn = document.querySelector('.translate-btn-' + lang);
+            if (activeBtn) {
+                activeBtn.style.opacity = '1';
+                activeBtn.style.transform = 'scale(1.1)';
+            }
+            
+            if (typeof changeLanguage === 'function') {
+                changeLanguage(lang);
+            }
+            
+            localStorage.setItem('selectedLanguage', lang);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+            setTimeout(() => {
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

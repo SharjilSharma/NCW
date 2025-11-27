@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductive Rights - Empower Hub</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./content-styles.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
@@ -14,14 +13,6 @@
             <div class="top-left">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png" alt="India Flag" class="flag">
                 <span>Government of India</span>
-            </div>
-            <div class="top-right">
-                <a href="#main" class="skip-link">Skip to Main Content</a>
-                <div class="text-size">
-                    <button onclick="changeFontSize('small')">-A</button>
-                    <button class="active" onclick="changeFontSize('normal')">A</button>
-                    <button onclick="changeFontSize('large')">A+</button>
-                </div>
             </div>
         </div>
     </div>
@@ -35,7 +26,6 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About Us</a></li>
                     <li><a href="index.html#services">Services</a></li>
                     <li><a href="#" class="active">Reproductive Rights</a></li>
                 </ul>
@@ -46,46 +36,57 @@
     <main id="main">
         <section class="page-header">
             <div class="container">
+                <a href="index.html" class="back-btn">
+                    <span class="material-icons-outlined">arrow_back</span>
+                    Back to Home
+                </a>
                 <h1>Reproductive Rights</h1>
-                <p>Explore the laws and regulations that protect women's reproductive health and rights in India</p>
+                <p>Understanding women's reproductive rights and healthcare provisions in India</p>
             </div>
         </section>
 
-        <section class="constitution-sections">
+        <section class="content-section">
             <div class="container">
-                <div class="sections-grid">
-                    <a href="pre-conception-pre-natal-act.html" class="section-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">health_and_safety</span>
+                <div class="articles-grid">
+                    <div class="article-card">
+                        <h3>Right to Reproductive Health</h3>
+                        <p>Every woman has the right to access comprehensive reproductive healthcare services, including family planning, maternal health, and safe abortion services.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Maternal Healthcare Services</a>
+                            <a href="#" class="sub-link">Family Planning Rights</a>
+                            <a href="#" class="sub-link">Safe Abortion Access</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Pre-Conception And Pre-Natal Diagnostic Techniques Act, 1994</h3>
-                            <p>Learn about the prohibition of sex selection and regulation of pre-natal diagnostic techniques</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
 
-                    <a href="medical-termination-pregnancy-act.html" class="section-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">medical_services</span>
+                    <div class="article-card">
+                        <h3>Medical Termination of Pregnancy Act</h3>
+                        <p>The MTP Act provides legal framework for safe abortion services and protects women's reproductive choices under specific conditions.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Legal Provisions</a>
+                            <a href="#" class="sub-link">Consent Requirements</a>
+                            <a href="#" class="sub-link">Healthcare Provider Guidelines</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Medical Termination of Pregnancy Act, 1971</h3>
-                            <p>Understand the legal framework for safe and legal abortion services in India</p>
-                        </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
 
-                    <a href="maternity-benefit-act.html" class="section-card">
-                        <div class="card-icon">
-                            <span class="material-icons-outlined">pregnant_woman</span>
+                    <div class="article-card">
+                        <h3>Maternity Benefits</h3>
+                        <p>Legal provisions ensuring maternity leave, healthcare benefits, and workplace protection for pregnant women and new mothers.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Maternity Leave Rights</a>
+                            <a href="#" class="sub-link">Healthcare Benefits</a>
+                            <a href="#" class="sub-link">Workplace Protection</a>
                         </div>
-                        <div class="card-content">
-                            <h3>Maternity Benefit Act, 1961</h3>
-                            <p>Explore maternity benefits, leave entitlements, and workplace protections for pregnant women</p>
+                    </div>
+
+                    <div class="article-card">
+                        <h3>Contraceptive Rights</h3>
+                        <p>Access to contraceptive methods and family planning services as fundamental reproductive rights for women.</p>
+                        <div class="sub-topics">
+                            <a href="#" class="sub-link">Contraceptive Access</a>
+                            <a href="#" class="sub-link">Sterilization Rights</a>
+                            <a href="#" class="sub-link">Emergency Contraception</a>
                         </div>
-                        <span class="material-icons-outlined">arrow_forward</span>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -95,7 +96,74 @@
         <div class="container">
             <p>&copy; 2024 Government of India. All rights reserved.</p>
         </div>
+        
+        <button class="chat-bot">
+            <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
+            <span class="material-icons-outlined">support_agent</span>
+        </button>
+        <button class="accessibility-toggle">
+            <span class="material-icons-outlined">accessibility_new</span>
+        </button>
+        <button class="color-toggle" onclick="toggleTheme()">
+            <span class="material-icons-outlined">contrast</span>
+        </button>
     </footer>
-    <script src="./script.js"></script>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script>
+        function translatePage(lang) {
+            document.querySelectorAll('.translate-btn').forEach(btn => {
+                btn.style.opacity = '0.7';
+                btn.style.transform = 'scale(1)';
+            });
+            
+            const activeBtn = document.querySelector('.translate-btn-' + lang);
+            if (activeBtn) {
+                activeBtn.style.opacity = '1';
+                activeBtn.style.transform = 'scale(1.1)';
+            }
+            
+            localStorage.setItem('selectedLanguage', lang);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+            translatePage(savedLang);
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+        });
+        
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
+        }
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empower Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png" alt="India Flag" class="flag">
+                <span data-translate="Government of India">Government of India</span>
+            </div>
+            <div class="top-right">
+                <a href="#services" class="skip-link" data-translate="Skip to Main Content">Skip to Main Content</a>
+                <div class="text-size">
+                    <button onclick="changeFontSize('decrease')">-A</button>
+                    <button class="active" onclick="changeFontSize('reset')">A</button>
+                    <button onclick="changeFontSize('increase')">A+</button>
+                </div>
+                <div class="language" onclick="toggleLanguageDropdown()">
+                    <span class="material-icons-outlined">language</span>
+                    <span id="current-language">English</span>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" onclick="changeLanguage('en'); return false;">English</a>
+                        <a href="#" onclick="changeLanguage('hi'); return false;">हिंदी</a>
+                        <a href="#" onclick="changeLanguage('ur'); return false;">اردو</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/45px-Emblem_of_India.svg.png" alt="Govt Emblem" class="emblem">
+                <h1 data-translate="Empower Hub">Empower Hub</h1>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#main" onclick="scrollToSection('main')" data-translate="Home">Home</a></li>
+                    <li><a href="#about" onclick="scrollToSection('about')" data-translate="About Us">About Us</a></li>
+                    <li><a href="#services" onclick="scrollToSection('services')" data-translate="Services">Services</a></li>
+                    <li><a href="#popular-cases" onclick="scrollToSection('popular-cases')" data-translate="Popular Cases">Popular Cases</a></li>
+                    <li><a href="#how-it-works" onclick="scrollToSection('how-it-works')" data-translate="How it Works">How it Works</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <a href="helpline.html" class="cta-button" data-translate="Quick Assist">Quick Assist</a>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search..." data-translate-placeholder="Search...">
+                    <button class="search-btn" onclick="toggleSearch()">
+                        <span class="material-icons-outlined">search</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero">
+            <div class="hero-background"></div>
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h2 data-translate="Access Your">Access Your</h2>
+                    <h1 data-translate="Rights">Rights</h1>
+                    <h2 data-translate="Secure Your">Secure Your</h2>
+                    <h1 data-translate="Future">Future</h1>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-tabs">
+                        <button class="tab-link active" data-tab="whats-new" data-translate="What's new">What's new</button>
+                        <button class="tab-link" data-tab="important-info" data-translate="Important information">Important information</button>
+                    </div>
+                    
+                    <div id="whats-new" class="tab-content active">
+                        <ul>
+                            <li>
+                                <div class="item-text">
+                                    <p>New women safety initiatives launched</p>
+                                    <span>15/12/2024</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-text">
+                                    <p>Updated helpline services available 24x7</p>
+                                    <span>10/12/2024</span>
+                                </div>
+                                <span class="doc-type">Announcement</span>
+                            </li>
+                            <li>
+                                <div class="item-text">
+                                    <p>Legal aid services expanded nationwide</p>
+                                    <span>05/12/2024</span>
+                                </div>
+                                <span class="doc-type">Policy Update</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="view-all" data-translate="View All">View All</a>
+                    </div>
+
+                    <div id="important-info" class="tab-content">
+                        <ul>
+                            <li>
+                                <div class="item-text">
+                                    <p>Emergency helpline numbers updated</p>
+                                    <span>01/12/2024</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-text">
+                                    <p>New cyber crime reporting portal launched</p>
+                                    <span>28/11/2024</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="#" class="view-all" data-translate="View All">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="explore-btn-container">
+                <button class="explore-btn" onclick="scrollToSection('services')" data-translate="Explore">Explore</button>
+            </div>
+        </section>
+    </main>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-text">
+                <h2 data-translate="About Ministry/Department">About Empower Hub</h2>
+                <p data-translate="We are dedicated to serving the public by [brief description of the ministry/department's mission]. Our team of experienced professionals is committed to [mention a few key objectives or areas of focus].">We are dedicated to empowering women through comprehensive legal support, awareness programs, and accessible resources. Our mission is to ensure every woman knows her rights and has access to justice.</p>
+                <p data-translate="We believe in [core values or principles the ministry/department upholds]. We are here to answer your questions and provide you with the information and resources you need.">We believe in equality, dignity, and the fundamental rights of all women. Our platform provides essential information, legal guidance, and emergency support services to help women navigate challenges and secure their future.</p>
+                <button class="btn btn-outline" data-translate="Know More">Know More</button>
+            </div>
+            <div class="about-images">
+                <div class="image-placeholder-large">
+                    <img src="aunties1.jpg" alt="Women Empowerment">
+                </div>
+                <div class="image-placeholder-medium">
+                    <img src="MinistryImage1.jpeg" alt="Ministry Building">
+                </div>
+                <div class="image-placeholder-small">
+                    <img src="MinistryImage2.jpeg" alt="Government Office">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container-large">
+            <div class="section-header">
+                <span class="tag-explore" data-translate="Explore">Explore</span>
+                <h2 data-translate="Explore Services by Category">Explore Services by Category</h2>
+            </div>
+            
+            <div class="category-grid">
+                <a href="indian-constitution-women.html" class="category-card">
+                    <div class="card-content">
+                        <span class="material-icons-outlined icon">gavel</span>
+                        <span data-translate="Indian Constitution and Women">Indian Constitution and Women</span>
+                    </div>
+                    <span class="material-icons-outlined">chevron_right</span>
+                </a>
+                <a href="reproductive-rights.html" class="category-card">
+                    <div class="card-content">
+                        <span class="material-icons-outlined icon">favorite</span>
+                        <span data-translate="Reproductive Rights">Reproductive Rights</span>
+                    </div>
+                    <span class="material-icons-outlined">chevron_right</span>
+                </a>
+                <a href="sexual-offences.html" class="category-card">
+                    <div class="card-content">
+                        <span class="material-icons-outlined icon">security</span>
+                        <span>Sexual Offences Against Women</span>
+                    </div>
+                    <span class="material-icons-outlined">chevron_right</span>
+                </a>
+                <a href="marriage-offences.html" class="category-card">
+                    <div class="card-content">
+                        <span class="material-icons-outlined icon">volunteer_activism</span>
+                        <span>Offences Related to Marriage</span>
+                    </div>
+                    <span class="material-icons-outlined">chevron_right</span>
+                </a>
+                <a href="cyber-crimes.html" class="category-card">
+                    <div class="card-content">
+                        <span class="material-icons-outlined icon">computer</span>
+                        <span>Cyber Crimes Against Women</span>
+                    </div>
+                    <span class="material-icons-outlined">chevron_right</span>
+                </a>
+                <a href="helpline.html" class="category-card">
+                    <div class="card-content">
+                        <span class="material-icons-outlined icon">support_agent</span>
+                        <span>Emergency Support & Helplines</span>
+                    </div>
+                    <span class="material-icons-outlined">chevron_right</span>
+                </a>
+            </div>
+
+            <div id="popular-cases" class="section-header">
+                <h2>Popular Cases</h2>
+            </div>
+            
+            <div class="popular-cases-grid">
+                <article class="case-card" style="--case-bg: #F3F9FF;">
+                    <div class="case-icon-wrapper" style="--icon-bg: #E3F2FD;">
+                        <span class="material-icons-outlined" style="color: #0B7BCB;">security</span>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-category">Women Safety</span>
+                        <h3>Domestic Violence Case</h3>
+                        <p>Legal Support • Response - 24 hours</p>
+                    </div>
+                </article>
+                <article class="case-card" style="--case-bg: #F5F9F4;">
+                    <div class="case-icon-wrapper" style="--icon-bg: #E3F2E2;">
+                        <span class="material-icons-outlined" style="color: #34842E;">work</span>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-category">Workplace Rights</span>
+                        <h3>Sexual Harassment</h3>
+                        <p>Legal Aid • Response - 48 hours</p>
+                    </div>
+                </article>
+                <article class="case-card" style="--case-bg: #FDF6F7;">
+                    <div class="case-icon-wrapper" style="--icon-bg: #FBE5E7;">
+                        <span class="material-icons-outlined" style="color: #D32F2F;">computer</span>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-category">Cyber Crime</span>
+                        <h3>Online Harassment</h3>
+                        <p>Cyber Cell • Response - 24 hours</p>
+                    </div>
+                </article>
+                <article class="case-card" style="--case-bg: #FEFBF2;">
+                    <div class="case-icon-wrapper" style="--icon-bg: #FFF6DE;">
+                        <span class="material-icons-outlined" style="color: #F9A825;">balance</span>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-category">Legal Rights</span>
+                        <h3>Property Rights</h3>
+                        <p>Legal Consultation • Response - 72 hours</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container-small">
+            <div class="section-header">
+                <h2>How It Works</h2>
+            </div>
+            
+            <div class="how-it-works-timeline">
+                <div class="timeline-dot"></div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+            </div>
+
+            <div class="how-it-works-grid">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <span class="material-icons-outlined">person_search</span>
+                    </div>
+                    <h3>Identify Your Need</h3>
+                    <p>Browse through our categories to find the right legal support or information you need.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <span class="material-icons-outlined">travel_explore</span>
+                    </div>
+                    <h3>Explore Resources</h3>
+                    <p>Access comprehensive guides, legal information, and support services tailored to your situation.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <span class="material-icons-outlined">task_alt</span>
+                    </div>
+                    <h3>Take Action</h3>
+                    <p>Use our helpline numbers, file complaints, or connect with legal aid services for immediate support.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <span class="material-icons-outlined">receipt_long</span>
+                    </div>
+                    <h3>Get Resolution</h3>
+                    <p>Track your case progress and receive ongoing support until your matter is resolved.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="support-band">
+            <div class="container">
+                <div class="support-text">
+                    <h2>Need Support?</h2>
+                    <p>Get immediate help through our 24x7 women helpline numbers and support services</p>
+                    <div class="emergency-numbers">
+                        <div class="emergency-item">
+                            <span class="material-icons-outlined">phone</span>
+                            <div>
+                                <strong>Emergency: 112</strong>
+                                <p>Police, Fire, Ambulance</p>
+                            </div>
+                        </div>
+                        <div class="emergency-item">
+                            <span class="material-icons-outlined">support_agent</span>
+                            <div>
+                                <strong>Women Helpline: 181</strong>
+                                <p>National helpline for women in distress</p>
+                            </div>
+                        </div>
+                        <div class="emergency-item">
+                            <span class="material-icons-outlined">security</span>
+                            <div>
+                                <strong>NCW Helpline: 7827170170</strong>
+                                <p>24x7 NCW direct helpline</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="helpline.html" class="btn btn-light-outline">
+                    <span>Get in touch</span>
+                    <span class="material-icons-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="main-footer">
+            <div class="container">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/45px-Emblem_of_India.svg.png" alt="Empower Hub Logo" class="footer-emblem"> 
+                        <span>Empower Hub</span>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><img src="https://via.placeholder.com/32" alt="Social Icon"></a>
+                        <a href="#"><img src="https://via.placeholder.com/32" alt="Social Icon"></a>
+                        <a href="#"><img src="https://via.placeholder.com/32" alt="Social Icon"></a>
+                    </div>
+                    <span class="last-updated">Last updated: 15-12-24</span>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="helpline.html">Emergency Support</a></li>
+                        <li><a href="#how-it-works">How it Works</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal Support</h4>
+                    <ul>
+                        <li><a href="indian-constitution-women.html">Constitutional Rights</a></li>
+                        <li><a href="sexual-offences.html">Sexual Offences</a></li>
+                        <li><a href="cyber-crimes.html">Cyber Crimes</a></li>
+                        <li><a href="marriage-offences.html">Marriage Rights</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Important Links</h4>
+                    <ul>
+                        <li><a href="#">Right to Information</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <address>
+                        National Commission for Women<br>
+                        Plot-21, Jasola Institutional Area<br>
+                        New Delhi - 110025<br>
+                        India
+                    </address>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-bar">
+            <div class="container">
+                <span>Copyright © 2024 - All Rights Reserved - Empower Hub</span>
+                <div class="policy-links">
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="helpline.html">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        
+        <button class="chat-bot">
+            <span class="tooltip">Hi! I am your legal assistant. Ask me anything!</span>
+            <span class="material-icons-outlined">support_agent</span>
+        </button>
+        <button class="accessibility-toggle">
+            <span class="material-icons-outlined">accessibility_new</span>
+        </button>
+        <button class="color-toggle" onclick="toggleTheme()">
+            <span class="material-icons-outlined">contrast</span>
+        </button>
+    </footer>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script>
+        // Smooth scroll function for menu navigation
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Update active menu item
+                document.querySelectorAll('.main-nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.querySelector(`[href="#${sectionId}"]`).classList.add('active');
+            }
+        }
+
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            // Tab switching
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    tabLinks.forEach(tab => tab.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+
+            // Load saved language
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
+        });
+        
+        // Theme toggle function
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
+        }
+
+        // Search toggle function
+        function toggleSearch() {
+            const searchContainer = document.querySelector('.search-container');
+            const searchInput = document.querySelector('.search-input');
+            
+            searchContainer.classList.toggle('active');
+            if (searchContainer.classList.contains('active')) {
+                searchInput.focus();
+            }
+        }
+
+        // Language dropdown toggle
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('language-dropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Font size functions
+        function changeFontSize(action) {
+            const root = document.documentElement;
+            let currentSize = parseFloat(getComputedStyle(root).fontSize);
+            
+            switch(action) {
+                case 'increase':
+                    root.style.fontSize = (currentSize + 2) + 'px';
+                    break;
+                case 'decrease':
+                    root.style.fontSize = Math.max(12, currentSize - 2) + 'px';
+                    break;
+                case 'reset':
+                    root.style.fontSize = '16px';
+                    break;
+            }
+        }
+
+        // Language change function
+        function changeLanguage(lang) {
+            if (typeof translatePage === 'function') {
+                translatePage(lang);
+            }
+            toggleLanguageDropdown();
+        }
+
+        // Use the main translation system from script.js
+        function translatePage(lang) {
+            // Update floating button states
+            document.querySelectorAll('.translate-btn').forEach(btn => {
+                btn.style.opacity = '0.7';
+                btn.style.transform = 'scale(1)';
+            });
+            
+            const activeBtn = document.querySelector('.translate-btn-' + lang);
+            if (activeBtn) {
+                activeBtn.style.opacity = '1';
+                activeBtn.style.transform = 'scale(1.1)';
+            }
+            
+            // Use the main translation system
+            if (typeof changeLanguage === 'function') {
+                changeLanguage(lang);
+            }
+            
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.language')) {
+                document.getElementById('language-dropdown').classList.remove('show');
+            }
+            if (!event.target.closest('.search-container')) {
+                document.querySelector('.search-container').classList.remove('active');
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

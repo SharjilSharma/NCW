@@ -37,6 +37,10 @@
     <main id="main">
         <section class="page-header">
             <div class="container">
+                <a href="fundamental-rights-women.html" class="back-btn">
+                    <span class="material-icons-outlined">arrow_back</span>
+                    Back to Fundamental Rights
+                </a>
                 <h1>Article 15 - Prohibition of Discrimination</h1>
                 <p>Constitutional protection against discrimination based on gender and other grounds</p>
             </div>
@@ -120,9 +124,65 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Government of India. All rights reserved.</p>
-            <a href="fundamental-rights-women.html" class="back-link">← Back to Fundamental Rights</a>
         </div>
+        
+        <button class="chat-bot">
+            <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
+            <span class="material-icons-outlined">support_agent</span>
+        </button>
+        <button class="accessibility-toggle">
+            <span class="material-icons-outlined">accessibility_new</span>
+        </button>
+        <button class="color-toggle" onclick="toggleTheme()">
+            <span class="material-icons-outlined">contrast</span>
+        </button>
     </footer>
-    <script src="./script.js"></script>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            // Load saved language after script.js loads
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
+        });
+        
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
+        }
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>

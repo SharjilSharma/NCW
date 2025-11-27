@@ -75,7 +75,7 @@ const translations = {
         'Services': 'Services',
         'Popular Cases': 'Popular Cases',
         'How it Works': 'How it Works',
-        'CTA': 'CTA',
+        'Quick Assist': 'Quick Assist',
         'Search...': 'Search...',
         
         // Hero Section
@@ -107,6 +107,45 @@ const translations = {
         'Explore Services by Category': 'Explore Services by Category',
         'Indian Constitution and Women': 'Indian Constitution and Women',
         'Reproductive Rights': 'Reproductive Rights',
+        'Sexual Offences Against Women': 'Sexual Offences Against Women',
+        'Offences Related to Marriage': 'Offences Related to Marriage',
+        'Cyber Crimes Against Women': 'Cyber Crimes Against Women',
+        'Emergency Support & Helplines': 'Emergency Support & Helplines',
+        
+        // Popular Cases
+        'Women Safety': 'Women Safety',
+        'Domestic Violence Case': 'Domestic Violence Case',
+        'Legal Support • Response - 24 hours': 'Legal Support • Response - 24 hours',
+        'Workplace Rights': 'Workplace Rights',
+        'Sexual Harassment': 'Sexual Harassment',
+        'Legal Aid • Response - 48 hours': 'Legal Aid • Response - 48 hours',
+        'Cyber Crime': 'Cyber Crime',
+        'Online Harassment': 'Online Harassment',
+        'Cyber Cell • Response - 24 hours': 'Cyber Cell • Response - 24 hours',
+        'Legal Rights': 'Legal Rights',
+        'Property Rights': 'Property Rights',
+        'Legal Consultation • Response - 72 hours': 'Legal Consultation • Response - 72 hours',
+        
+        // How it Works
+        'Identify Your Need': 'Identify Your Need',
+        'Browse through our categories to find the right legal support or information you need.': 'Browse through our categories to find the right legal support or information you need.',
+        'Explore Resources': 'Explore Resources',
+        'Access comprehensive guides, legal information, and support services tailored to your situation.': 'Access comprehensive guides, legal information, and support services tailored to your situation.',
+        'Take Action': 'Take Action',
+        'Use our helpline numbers, file complaints, or connect with legal aid services for immediate support.': 'Use our helpline numbers, file complaints, or connect with legal aid services for immediate support.',
+        'Get Resolution': 'Get Resolution',
+        'Track your case progress and receive ongoing support until your matter is resolved.': 'Track your case progress and receive ongoing support until your matter is resolved.',
+        
+        // Footer
+        'Need Support?': 'Need Support?',
+        'Get immediate help through our 24x7 women helpline numbers and support services': 'Get immediate help through our 24x7 women helpline numbers and support services',
+        'Emergency: 112': 'Emergency: 112',
+        'Police, Fire, Ambulance': 'Police, Fire, Ambulance',
+        'Women Helpline: 181': 'Women Helpline: 181',
+        'National helpline for women in distress': 'National helpline for women in distress',
+        'NCW Helpline: 7827170170': 'NCW Helpline: 7827170170',
+        '24x7 NCW direct helpline': '24x7 NCW direct helpline',
+        'Get in touch': 'Get in touch',
         
         // Common Elements
         'Demo': 'Demo',
@@ -130,7 +169,7 @@ const translations = {
         'Services': 'सेवाएं',
         'Popular Cases': 'लोकप्रिय मामले',
         'How it Works': 'यह कैसे काम करता है',
-        'CTA': 'सीटीए',
+        'Quick Assist': 'त्वरित सहायता',
         'Search...': 'खोजें...',
         
         // Hero Section
@@ -162,6 +201,45 @@ const translations = {
         'Explore Services by Category': 'श्रेणी के अनुसार सेवाओं का अन्वेषण करें',
         'Indian Constitution and Women': 'भारतीय संविधान और महिलाएं',
         'Reproductive Rights': 'प्रजनन अधिकार',
+        'Sexual Offences Against Women': 'महिलाओं के विरुद्ध यौन अपराध',
+        'Offences Related to Marriage': 'विवाह संबंधी अपराध',
+        'Cyber Crimes Against Women': 'महिलाओं के विरुद्ध साइबर अपराध',
+        'Emergency Support & Helplines': 'आपातकालीन सहायता और हेल्पलाइन',
+        
+        // Popular Cases
+        'Women Safety': 'महिला सुरक्षा',
+        'Domestic Violence Case': 'घरेलू हिंसा का मामला',
+        'Legal Support • Response - 24 hours': 'कानूनी सहायता • प्रतिक्रिया - 24 घंटे',
+        'Workplace Rights': 'कार्यक्षेत्र अधिकार',
+        'Sexual Harassment': 'यौन उत्पीड़न',
+        'Legal Aid • Response - 48 hours': 'कानूनी सहायता • प्रतिक्रिया - 48 घंटे',
+        'Cyber Crime': 'साइबर अपराध',
+        'Online Harassment': 'ऑनलाइन उत्पीड़न',
+        'Cyber Cell • Response - 24 hours': 'साइबर सेल • प्रतिक्रिया - 24 घंटे',
+        'Legal Rights': 'कानूनी अधिकार',
+        'Property Rights': 'संपत्ति अधिकार',
+        'Legal Consultation • Response - 72 hours': 'कानूनी परामर्श • प्रतिक्रिया - 72 घंटे',
+        
+        // How it Works
+        'Identify Your Need': 'अपनी आवश्यकता पहचानें',
+        'Browse through our categories to find the right legal support or information you need.': 'आपको आवश्यक सही कानूनी सहायता या जानकारी खोजने के लिए हमारी श्रेणियों को देखें।',
+        'Explore Resources': 'संसाधनों का अन्वेषण करें',
+        'Access comprehensive guides, legal information, and support services tailored to your situation.': 'आपकी स्थिति के अनुकूल व्यापक गाइड, कानूनी जानकारी और सहायता सेवाओं तक पहुंचें।',
+        'Take Action': 'कार्रवाई करें',
+        'Use our helpline numbers, file complaints, or connect with legal aid services for immediate support.': 'तत्काल सहायता के लिए हमारे हेल्पलाइन नंबरों का उपयोग करें, शिकायत दर्ज करें, या कानूनी सहायता सेवाओं से जुड़ें।',
+        'Get Resolution': 'समाधान प्राप्त करें',
+        'Track your case progress and receive ongoing support until your matter is resolved.': 'अपने मामले की प्रगति को ट्रैक करें और जब तक आपका मामला हल नहीं हो जाता तब तक निरंतर सहायता प्राप्त करें।',
+        
+        // Footer
+        'Need Support?': 'सहायता चाहिए?',
+        'Get immediate help through our 24x7 women helpline numbers and support services': 'हमारे 24x7 महिला हेल्पलाइन नंबर और सहायता सेवाओं के माध्यम से तत्काल सहायता प्राप्त करें',
+        'Emergency: 112': 'आपातकाल: 112',
+        'Police, Fire, Ambulance': 'पुलिस, अग्निशमन, एम्बुलेंस',
+        'Women Helpline: 181': 'महिला हेल्पलाइन: 181',
+        'National helpline for women in distress': 'संकट में महिलाओं के लिए राष्ट्रीय हेल्पलाइन',
+        'NCW Helpline: 7827170170': 'NCW हेल्पलाइन: 7827170170',
+        '24x7 NCW direct helpline': '24x7 NCW प्रत्यक्ष हेल्पलाइन',
+        'Get in touch': 'संपर्क करें',
         
         // Common Elements
         'Demo': 'डेमो',
@@ -185,7 +263,7 @@ const translations = {
         'Services': 'خدمات',
         'Popular Cases': 'مقبول کیسز',
         'How it Works': 'یہ کیسے کام کرتا ہے',
-        'CTA': 'سی ٹی اے',
+        'Quick Assist': 'فوری مدد',
         'Search...': 'تلاش کریں...',
         
         // Hero Section
@@ -217,6 +295,45 @@ const translations = {
         'Explore Services by Category': 'زمرے کے مطابق خدمات دریافت کریں',
         'Indian Constitution and Women': 'ہندوستانی آئین اور خواتین',
         'Reproductive Rights': 'تولیدی حقوق',
+        'Sexual Offences Against Women': 'خواتین کے خلاف جنسی جرائم',
+        'Offences Related to Marriage': 'شادی سے متعلق جرائم',
+        'Cyber Crimes Against Women': 'خواتین کے خلاف سائبر جرائم',
+        'Emergency Support & Helplines': 'ایمرجنسی سپورٹ اور ہیلپ لائنز',
+        
+        // Popular Cases
+        'Women Safety': 'خواتین کی حفاظت',
+        'Domestic Violence Case': 'گھریلو تشدد کا کیس',
+        'Legal Support • Response - 24 hours': 'قانونی سپورٹ • جواب - 24 گھنٹے',
+        'Workplace Rights': 'کار کی جگہ کے حقوق',
+        'Sexual Harassment': 'جنسی ہراسمنٹ',
+        'Legal Aid • Response - 48 hours': 'قانونی امداد • جواب - 48 گھنٹے',
+        'Cyber Crime': 'سائبر کرائم',
+        'Online Harassment': 'آن لائن ہراسمنٹ',
+        'Cyber Cell • Response - 24 hours': 'سائبر سیل • جواب - 24 گھنٹے',
+        'Legal Rights': 'قانونی حقوق',
+        'Property Rights': 'جائیداد کے حقوق',
+        'Legal Consultation • Response - 72 hours': 'قانونی مشورہ • جواب - 72 گھنٹے',
+        
+        // How it Works
+        'Identify Your Need': 'اپنی ضرورت کی شناخت کریں',
+        'Browse through our categories to find the right legal support or information you need.': 'آپ کو درکار صحیح قانونی سپورٹ یا معلومات تلاش کرنے کے لیے ہماری زمروں کو دیکھیں۔',
+        'Explore Resources': 'وسائل کی تلاش کریں',
+        'Access comprehensive guides, legal information, and support services tailored to your situation.': 'آپ کی صورتحال کے مطابق جامع گائیڈز، قانونی معلومات، اور سپورٹ سروسز تک رسائی حاصل کریں۔',
+        'Take Action': 'عمل کریں',
+        'Use our helpline numbers, file complaints, or connect with legal aid services for immediate support.': 'فوری مدد کے لیے ہمارے ہیلپ لائن نمبرز کا استعمال کریں، شکایات درج کریں، یا قانونی امداد کی خدمات سے رابطہ کریں۔',
+        'Get Resolution': 'حل حاصل کریں',
+        'Track your case progress and receive ongoing support until your matter is resolved.': 'اپنے کیس کی پیش قدمی کو ٹریک کریں اور جب تک آپ کا معاملہ حل نہیں ہو جاتا تب تک مسلسل مدد حاصل کریں۔',
+        
+        // Footer
+        'Need Support?': 'مدد چاہیے؟',
+        'Get immediate help through our 24x7 women helpline numbers and support services': 'ہمارے 24x7 خواتین ہیلپ لائن نمبرز اور سپورٹ سروسز کے ذریعے فوری مدد حاصل کریں',
+        'Emergency: 112': 'ایمرجنسی: 112',
+        'Police, Fire, Ambulance': 'پولیس، فائر، ایمبولینس',
+        'Women Helpline: 181': 'خواتین ہیلپ لائن: 181',
+        'National helpline for women in distress': 'مصیبت میں خواتین کے لیے قومی ہیلپ لائن',
+        'NCW Helpline: 7827170170': 'NCW ہیلپ لائن: 7827170170',
+        '24x7 NCW direct helpline': '24x7 NCW براہ راست ہیلپ لائن',
+        'Get in touch': 'رابطہ کریں',
         
         // Common Elements
         'Demo': 'ڈیمو',
@@ -388,6 +505,88 @@ function initializeSmoothScrolling() {
     });
 }
 
+// ======== SCROLL TO SERVICES FUNCTION ========
+// Function for the yellow explore button
+function scrollToServices() {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+        servicesSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// ======== LANGUAGE DROPDOWN TOGGLE ========
+function toggleLanguageDropdown() {
+    const dropdown = document.getElementById('language-dropdown');
+    if (dropdown) {
+        dropdown.classList.toggle('active');
+    }
+}
+
+// ======== TRANSLATE PAGE FUNCTION ========
+function translatePage(lang) {
+    // Update button states
+    document.querySelectorAll('.translate-btn').forEach(btn => {
+        btn.style.opacity = '0.7';
+        btn.style.transform = 'scale(1)';
+    });
+    
+    const activeBtn = document.querySelector('.translate-btn-' + lang);
+    if (activeBtn) {
+        activeBtn.style.opacity = '1';
+        activeBtn.style.transform = 'scale(1.1)';
+    }
+    
+    // Actually translate the content using the main translation system
+    if (typeof changeLanguage === 'function') {
+        changeLanguage(lang);
+    } else {
+        // Fallback: Use Google Translate if main system not available
+        translateWithGoogle(lang);
+    }
+    
+    // Store language preference
+    localStorage.setItem('selectedLanguage', lang);
+    
+    // Update top bar language display if exists
+    const languageNames = {
+        'en': 'English',
+        'hi': 'हिंदी',
+        'ur': 'اردو'
+    };
+    
+    const currentLangSpan = document.getElementById('current-language');
+    if (currentLangSpan) {
+        currentLangSpan.textContent = languageNames[lang];
+    }
+}
+
+// ======== GOOGLE TRANSLATE FALLBACK ========
+function translateWithGoogle(lang) {
+    // Set document language
+    document.documentElement.lang = lang;
+    
+    // Set RTL for Urdu
+    if (lang === 'ur') {
+        document.documentElement.dir = 'rtl';
+        document.body.classList.add('rtl');
+    } else {
+        document.documentElement.dir = 'ltr';
+        document.body.classList.remove('rtl');
+    }
+    
+    // Try to use Google Translate if available
+    if (typeof google !== 'undefined' && google.translate) {
+        try {
+            google.translate.TranslateElement.getInstance().translatePage(lang);
+        } catch (e) {
+            console.log('Google Translate not available');
+        }
+    }
+}
+
 // ======== LOADING ANIMATION ========
 // This manages the page loading state
 function initializePageLoading() {
@@ -399,19 +598,31 @@ function initializePageLoading() {
 // ======== INITIALIZATION ========
 // This runs when the page loads and sets up all functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Load saved preferences
-    const savedFontSize = localStorage.getItem('fontSize');
-    const savedLanguage = localStorage.getItem('language');
+    // Prevent font size glitch by setting default immediately
+    document.body.style.fontSize = '16px';
+    document.body.classList.add('loaded');
     
-    if (savedFontSize) {
-        currentFontLevel = parseInt(savedFontSize);
-        document.body.style.fontSize = fontSizes[currentFontLevel];
-        updateFontButtons();
-    }
-    
-    if (savedLanguage && translations[savedLanguage]) {
-        changeLanguage(savedLanguage);
-    }
+    // Load saved preferences after a small delay to prevent glitches
+    setTimeout(() => {
+        const savedFontSize = localStorage.getItem('fontSize');
+        const savedLanguage = localStorage.getItem('selectedLanguage') || localStorage.getItem('language');
+        
+        if (savedFontSize) {
+            currentFontLevel = parseInt(savedFontSize);
+            document.body.style.fontSize = fontSizes[currentFontLevel];
+            updateFontButtons();
+        }
+        
+        if (savedLanguage && translations[savedLanguage]) {
+            changeLanguage(savedLanguage);
+        }
+        
+        // Load saved language for translate buttons
+        const savedTranslateLang = localStorage.getItem('selectedLanguage') || 'en';
+        if (typeof translatePage === 'function') {
+            translatePage(savedTranslateLang);
+        }
+    }, 50);
     
     // Add data-translate attributes to translatable elements
     addTranslateAttributes();
@@ -468,7 +679,7 @@ function addTranslateAttributes() {
     
     // Manual assignments for specific elements that need special handling
     const specificElements = [
-        { selector: '.cta-button', key: 'CTA' },
+        { selector: '.cta-button', key: 'Quick Assist' },
         { selector: '.search-input', attr: 'placeholder', key: 'Search...' },
         { selector: '.view-all', key: 'View All' },
         { selector: '.explore-btn', key: 'Explore' },
