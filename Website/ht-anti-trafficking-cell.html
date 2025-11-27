@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti Trafficking Cell - Empower Hub</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./content-styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png" alt="India Flag" class="flag">
+                <span>Government of India</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/45px-Emblem_of_India.svg.png" alt="Govt Emblem" class="emblem">
+                <h1>Empower Hub</h1>
+            </a>
+            <nav class="breadcrumb-nav">
+                <a href="index.html" class="breadcrumb-link">
+                    <span class="material-icons-outlined">home</span>
+                    Home
+                </a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="other-offences.html" class="breadcrumb-link">Other Offences</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="human-trafficking-main.html" class="breadcrumb-link">Human Trafficking</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">Anti Trafficking Cell</span>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-header">
+            <div class="container">
+                <a href="human-trafficking-main.html" class="back-btn">
+                    <span class="material-icons-outlined">arrow_back</span>
+                    Back to Human Trafficking
+                </a>
+                <h1>Anti Trafficking Cell</h1>
+                <p>Specialized units for combating human trafficking</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="content-wrapper">
+                    <div class="content-section">
+                        <h2>About Anti Trafficking Cell</h2>
+                        <p>The Ministry of Home Affairs has established an Anti Trafficking Cell as a Nodal cell to deal with matters relating to law enforcement response on Trafficking in human beings, excluding legislative, welfare and promotional aspects, which are subject matters of Department of Women & Child Development.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>Role and Functions</h2>
+                        <p>The Cell provides suitable guidelines to the States/UTs from time to time for strengthening law enforcement response in tackling human trafficking.</p>
+                        
+                        <h3>Key Responsibilities</h3>
+                        <ul>
+                            <li>Coordinating law enforcement response to trafficking</li>
+                            <li>Providing guidelines to States and Union Territories</li>
+                            <li>Strengthening anti-trafficking measures</li>
+                            <li>Facilitating inter-state coordination</li>
+                            <li>Monitoring trafficking cases and trends</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>Scope of Work</h2>
+                        <h3>Included</h3>
+                        <ul>
+                            <li>Law enforcement response</li>
+                            <li>Investigation and prosecution support</li>
+                            <li>Inter-agency coordination</li>
+                            <li>Training and capacity building</li>
+                        </ul>
+                        
+                        <h3>Excluded</h3>
+                        <ul>
+                            <li>Legislative matters (handled by other departments)</li>
+                            <li>Welfare aspects (Department of Women & Child Development)</li>
+                            <li>Promotional activities (Department of Women & Child Development)</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>Contact and Reporting</h2>
+                        <p>For trafficking-related law enforcement matters, contact the Anti Trafficking Cell through appropriate channels or report to local police who will coordinate with the cell as needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Government of India. All rights reserved.</p>
+        </div>
+        
+        <button class="chat-bot">
+            <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
+            <span class="material-icons-outlined">support_agent</span>
+        </button>
+        <button class="accessibility-toggle">
+            <span class="material-icons-outlined">accessibility_new</span>
+        </button>
+        <button class="color-toggle" onclick="toggleTheme()">
+            <span class="material-icons-outlined">contrast</span>
+        </button>
+    </footer>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हiंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
+        });
+        
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

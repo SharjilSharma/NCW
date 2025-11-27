@@ -20,7 +20,6 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -29,19 +28,12 @@ html {
     }
 }
 
-* {
-    transition: all 0.3s ease;
-}
+
 
 body {
     background-color: var(--light-bg);
     color: var(--text-dark);
     font-size: 16px !important;
-    visibility: hidden;
-}
-
-body.loaded {
-    visibility: visible;
 }
 
 .container {
@@ -105,6 +97,35 @@ body.loaded {
     cursor: pointer;
 }
 
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.breadcrumb-nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.breadcrumb-nav a:hover {
+    color: #fec107;
+    text-decoration: underline;
+}
+
+.breadcrumb-nav span {
+    color: var(--text-light);
+    margin: 0 0.5rem;
+}
+
+.breadcrumb-nav .current {
+    color: #fec107;
+    font-weight: 600;
+}
+
 .skip-link {
     text-decoration: none;
     color: var(--text-secondary);
@@ -150,6 +171,16 @@ body.font-large {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.main-nav {
+    z-index: 1001;
+    position: relative;
+}
+
+.main-nav ul {
+    z-index: 1002;
+    position: relative;
+}
+
 .main-header .container {
     height: 60px;
 }
@@ -175,6 +206,11 @@ body.font-large {
     display: flex;
     list-style: none;
     gap: 2rem;
+    pointer-events: auto;
+}
+
+.main-nav li {
+    pointer-events: auto;
 }
 
 .main-nav a {
@@ -183,6 +219,10 @@ body.font-large {
     font-weight: 500;
     padding: 0.5rem 0;
     position: relative;
+    cursor: pointer !important;
+    z-index: 10;
+    pointer-events: auto !important;
+    display: block;
 }
 
 .main-nav a.active, .main-nav a:hover {
@@ -711,9 +751,17 @@ body {
 }
 
 .carousel-wrapper {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     margin: 0 60px;
     padding-top: 30px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 .carousel-track {
@@ -1569,6 +1617,41 @@ body.dark-theme .back-btn:hover {
     background: #4fc3f7;
 }
 
+/* ======== BREADCRUMB NAVIGATION ======== */
+.breadcrumb {
+    background: #f8f9fa;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--main-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #004ad9;
+    text-decoration: underline;
+}
+
+.breadcrumb .separator {
+    color: #666;
+    margin: 0 0.25rem;
+}
+
+.breadcrumb .current {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
 /* ======== CONSTITUTION & WOMEN PAGES ======== */
 .page-header {
     background: linear-gradient(135deg, var(--dark-blue) 0%, var(--main-blue) 100%);
@@ -1631,6 +1714,9 @@ body.dark-theme .back-btn:hover {
 .section-card .card-icon .material-icons-outlined {
     color: white;
     font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .section-card .card-content h3 {

@@ -595,6 +595,168 @@ function initializePageLoading() {
     });
 }
 
+// ======== CLICK TRACKING SYSTEM ========
+let clickTracker = {
+    clicks: [],
+    sessionId: Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+    
+    track: function(element, action, details = {}) {
+        const clickData = {
+            timestamp: new Date().toISOString(),
+            sessionId: this.sessionId,
+            element: element.tagName || 'unknown',
+            className: element.className || '',
+            id: element.id || '',
+            action: action,
+            text: element.textContent?.trim().substring(0, 50) || '',
+            url: window.location.href,
+            page: document.title,
+            ...details
+        };
+        
+        this.clicks.push(clickData);
+        console.log('Click tracked:', clickData);
+        
+        // Store in localStorage
+        localStorage.setItem('clickTracker', JSON.stringify(this.clicks));
+        
+        // Send to analytics if available
+        this.sendToAnalytics(clickData);
+    },
+    
+    sendToAnalytics: function(data) {
+        // Google Analytics tracking
+        if (typeof gtag !== 'undefined') {
+            gtag('event', data.action, {
+                event_category: 'User Interaction',
+                event_label: data.text,
+                custom_parameter_1: data.element
+            });
+        }
+        
+        // Custom analytics endpoint
+        if (window.ANALYTICS_ENDPOINT) {
+            fetch(window.ANALYTICS_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).catch(e => console.log('Analytics send failed:', e));
+        }
+    },
+    
+    getReport: function() {
+        return {
+            sessionId: this.sessionId,
+            totalClicks: this.clicks.length,
+            clicks: this.clicks,
+            summary: this.generateSummary()
+        };
+    },
+    
+    generateSummary: function() {
+        const summary = {};
+        this.clicks.forEach(click => {
+            const key = click.action;
+            summary[key] = (summary[key] || 0) + 1;
+        });
+        return summary;
+    }
+};
+
+// Auto-track all clicks
+function initializeClickTracking() {
+    document.addEventListener('click', function(e) {
+        const element = e.target;
+        let action = 'click';
+        let details = {};
+        
+        // Determine action type
+        if (element.matches('a')) {
+            action = 'link_click';
+            details.href = element.href;
+        } else if (element.matches('button')) {
+            action = 'button_click';
+        } else if (element.matches('.case-card')) {
+            action = 'case_card_click';
+        } else if (element.matches('.section-card')) {
+            action = 'section_card_click';
+        } else if (element.matches('.faq-question')) {
+            action = 'faq_click';
+        } else if (element.matches('.carousel-btn')) {
+            action = 'carousel_navigation';
+        } else if (element.matches('.translate-btn')) {
+            action = 'language_change';
+            details.language = element.className.match(/translate-btn-(\w+)/)?.[1];
+        }
+        
+        clickTracker.track(element, action, details);
+    });
+    
+    // Track form submissions
+    document.addEventListener('submit', function(e) {
+        clickTracker.track(e.target, 'form_submit', {
+            formId: e.target.id,
+            formAction: e.target.action
+        });
+    });
+    
+    // Track page visibility changes
+    document.addEventListener('visibilitychange', function() {
+        clickTracker.track(document, document.hidden ? 'page_hidden' : 'page_visible');
+    });
+}
+
+// Expose tracking functions globally
+window.trackClick = function(element, action, details) {
+    clickTracker.track(element, action, details);
+};
+
+window.getClickReport = function() {
+    return clickTracker.getReport();
+};
+
+window.clearClickData = function() {
+    clickTracker.clicks = [];
+    localStorage.removeItem('clickTracker');
+};
+
+// ======== CLICK TRACKING ========
+let clickData = [];
+
+function trackClick(element, action) {
+    const timestamp = new Date().toISOString();
+    const pageUrl = window.location.pathname;
+    const elementInfo = {
+        tag: element.tagName,
+        class: element.className,
+        id: element.id,
+        text: element.textContent?.substring(0, 50)
+    };
+    
+    const clickEvent = {
+        timestamp,
+        page: pageUrl,
+        action,
+        element: elementInfo
+    };
+    
+    clickData.push(clickEvent);
+    console.log('Click tracked:', clickEvent);
+    
+    localStorage.setItem('clickTracking', JSON.stringify(clickData));
+}
+
+function initializeClickTracking() {
+    const stored = localStorage.getItem('clickTracking');
+    if (stored) {
+        clickData = JSON.parse(stored);
+    }
+    
+    document.addEventListener('click', function(e) {
+        trackClick(e.target, 'click');
+    });
+}
+
 // ======== INITIALIZATION ========
 // This runs when the page loads and sets up all functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -628,11 +790,13 @@ document.addEventListener('DOMContentLoaded', function() {
     addTranslateAttributes();
     
     // Initialize all functionality
+    initializeClickTracking();
     initializeTabs();
     initializeFAQ();
     initializeMobileMenu();
     initializeSmoothScrolling();
     initializePageLoading();
+    initializeClickTracking();
     
     // Update font buttons on load
     updateFontButtons();
@@ -840,7 +1004,7 @@ const caseData = {
     },
     'hina': {
         title: 'Hina Case (2020)',
-        category: 'Illegal attempt at instant Triple Talaq after 2019 Act',
+        category: 'Illegal Triple Talaq',
         summary: 'Hina\'s husband attempted instant Triple Talaq even after the 2019 Act banned it.',
         background: 'Husband repeatedly threatened talaq. Emotional blackmail. Continued illegal practice.',
         suffering: 'Fear of illegal divorce. Domestic harassment. No stability for children.',
@@ -923,8 +1087,13 @@ document.addEventListener('keydown', function(e) {
 });
 
 function moveCarousel(direction) {
-    // Simple button functionality - no movement for now
-    console.log('Button clicked:', direction);
+    const wrapper = document.querySelector('.carousel-wrapper');
+    const cardWidth = 300;
+    
+    wrapper.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+    });
 }
 
 // Touch/swipe support for mobile

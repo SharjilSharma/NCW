@@ -4,106 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who can claim Maintenance - Empower Hub</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./content-styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background: #f9faff; color: #333; line-height: 1.6; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
-        .main-header { background: #0f0a40; color: white; padding: 1rem 0; }
-        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; }
-        .logo h1 { font-size: 1.5rem; font-weight: 700; }
-        .emblem { height: 45px; }
-        .main-nav ul { display: flex; list-style: none; gap: 2rem; }
-        .main-nav a { text-decoration: none; color: white; font-weight: 500; }
-        .content-main { padding: 2rem 0; min-height: 60vh; }
-        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.9rem; }
-        .breadcrumb a { color: #005bff; text-decoration: none; }
-        .breadcrumb span { color: #555; }
-        .page-header { text-align: center; margin-bottom: 3rem; }
-        .page-header h1 { font-size: 2.2rem; font-weight: 700; color: #333; margin-bottom: 1rem; }
-        .content-section { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 2rem; }
-        .eligibility-list { list-style: none; margin: 1.5rem 0; }
-        .eligibility-item { display: flex; align-items: flex-start; margin-bottom: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #005bff; }
-        .bullet { color: #005bff; font-weight: bold; font-size: 1.2rem; margin-right: 1rem; margin-top: 0.1rem; flex-shrink: 0; }
-        .eligibility-item p { margin: 0; color: #555; }
-        .highlight-box { background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); border: 1px solid #bbdefb; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
-        .highlight-box h3 { color: #005bff; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; }
-        .content-footer { background: #0f0a40; color: white; text-align: center; padding: 2rem 0; margin-top: 3rem; }
-    </style>
 </head>
 <body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png" alt="India Flag" class="flag">
+                <span>Government of India</span>
+            </div>
+        </div>
+    </div>
+
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/45px-Emblem_of_India.svg.png" alt="Govt Emblem" class="emblem">
                 <h1>Empower Hub</h1>
             </a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="bnss-maintenance.html">Maintenance</a></li>
-                </ul>
+            <nav class="breadcrumb-nav">
+                <a href="index.html" class="breadcrumb-link">
+                    <span class="material-icons-outlined">home</span>
+                    Home
+                </a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="bharatiya-nyaya-suraksha.html" class="breadcrumb-link">BNSS Rights</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="bnss-maintenance-new.html" class="breadcrumb-link">Maintenance</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">Who can claim Maintenance</span>
             </nav>
         </div>
     </header>
 
-    <main class="content-main">
-        <div class="container">
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span class="material-icons-outlined">chevron_right</span>
-                <a href="women-rights-bnss.html">Women Rights under BNSS</a>
-                <span class="material-icons-outlined">chevron_right</span>
-                <a href="bnss-maintenance.html">Maintenance</a>
-                <span class="material-icons-outlined">chevron_right</span>
-                <span>Who can claim Maintenance</span>
-            </div>
-
-            <div class="page-header">
+    <main id="main">
+        <section class="page-header">
+            <div class="container">
+                <a href="bnss-maintenance-new.html" class="back-btn">
+                    <span class="material-icons-outlined">arrow_back</span>
+                    Back to Maintenance
+                </a>
                 <h1>Who can claim Maintenance under various laws</h1>
+                <p>Eligibility criteria for claiming maintenance under different legal provisions</p>
             </div>
+        </section>
 
-            <div class="content-section">
-                <div class="highlight-box">
-                    <h3>Eligible Persons for Maintenance</h3>
-                    <p>The following categories of persons are eligible to claim maintenance under various laws:</p>
-                </div>
+        <section class="content-section">
+            <div class="container">
+                <div class="content-wrapper">
 
-                <ul class="eligibility-list">
-                    <li class="eligibility-item">
-                        <span class="bullet">•</span>
-                        <p><strong>Wife who is unable to maintain herself</strong> - A wife who cannot support herself financially has the right to claim maintenance from her husband.</p>
-                    </li>
+                    <div class="important-notice">
+                        <h3>Eligible Persons for Maintenance</h3>
+                        <p>The following categories of persons are eligible to claim maintenance under various laws:</p>
+                    </div>
 
-                    <li class="eligibility-item">
-                        <span class="bullet">•</span>
-                        <p><strong>Legitimate or illegitimate child, whether married or not, unable to maintain itself</strong> - Any child, regardless of legitimacy or marital status, who cannot support themselves is entitled to maintenance.</p>
-                    </li>
+                    <div class="content-section">
+                        <h2>Categories of Eligible Persons</h2>
+                        <div class="content-list">
 
-                    <li class="eligibility-item">
-                        <span class="bullet">•</span>
-                        <p><strong>Legitimate or illegitimate child (not being a married daughter) who has attained majority, where such child is, by reason of any physical or mental abnormality or injury unable to maintain itself</strong> - Adult children with disabilities or injuries that prevent self-maintenance are eligible for support.</p>
-                    </li>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Wife who is unable to maintain herself:</strong> A wife who cannot support herself financially has the right to claim maintenance from her husband.</p>
+                            </div>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Legitimate or illegitimate child:</strong> Any child, whether married or not, who cannot support themselves is entitled to maintenance.</p>
+                            </div>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Adult children with disabilities:</strong> Children who have attained majority but cannot maintain themselves due to physical or mental abnormality or injury.</p>
+                            </div>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Father or mother:</strong> Elderly or incapacitated parents who cannot support themselves can claim maintenance from their children.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <li class="eligibility-item">
-                        <span class="bullet">•</span>
-                        <p><strong>Father or mother, unable to maintain himself or herself</strong> - Elderly or incapacitated parents who cannot support themselves can claim maintenance from their children.</p>
-                    </li>
-                </ul>
-
-                <div class="highlight-box">
-                    <h3>⚠️ Important Note</h3>
-                    <p>These provisions ensure that vulnerable family members receive necessary financial support when they cannot maintain themselves. The law recognizes the duty of family members to support each other in times of need.</p>
+                    <div class="highlight-box">
+                        <h3>Important Note</h3>
+                        <p>These provisions ensure that vulnerable family members receive necessary financial support when they cannot maintain themselves. The law recognizes the duty of family members to support each other in times of need.</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <footer class="content-footer">
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Empower Hub - Government of India</p>
+            <p>&copy; 2024 Government of India. All rights reserved.</p>
         </div>
+        
+        <button class="chat-bot">
+            <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
+            <span class="material-icons-outlined">support_agent</span>
+        </button>
+        <button class="accessibility-toggle">
+            <span class="material-icons-outlined">accessibility_new</span>
+        </button>
+        <button class="color-toggle" onclick="toggleTheme()">
+            <span class="material-icons-outlined">contrast</span>
+        </button>
     </footer>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
+        });
+        
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
+        }
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>

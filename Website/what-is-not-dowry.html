@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is not Dowry - Empower Hub</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./content-styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png" alt="India Flag" class="flag">
+                <span>Government of India</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/45px-Emblem_of_India.svg.png" alt="Govt Emblem" class="emblem">
+                <h1>Empower Hub</h1>
+            </a>
+            <nav class="breadcrumb-nav">
+                <a href="index.html" class="breadcrumb-link">
+                    <span class="material-icons-outlined">home</span>
+                    Home
+                </a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="marriage-offences.html" class="breadcrumb-link">Marriage Offences</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="dowry-main.html" class="breadcrumb-link">Dowry</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">What is not Dowry</span>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-header">
+            <div class="container">
+                <a href="dowry-main.html" class="back-btn">
+                    <span class="material-icons-outlined">arrow_back</span>
+                    Back to Dowry
+                </a>
+                <h1>What is not Dowry</h1>
+                <p>Understanding what does not constitute dowry under the law</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="content-wrapper">
+                    <div class="important-notice">
+                        <h3>Legal Definition</h3>
+                        <p>Any gifts willingly given to the bride or groom at the time of marriage, without any demand from the other side.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>What Does NOT Constitute Dowry</h2>
+                        <div class="content-list">
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Voluntary Gifts:</strong> Gifts given out of love and affection without any demand or expectation from the receiving party.</p>
+                            </div>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Wedding Presents:</strong> Traditional gifts exchanged during marriage ceremonies as part of cultural customs, given willingly.</p>
+                            </div>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Stridhan:</strong> Property given to a woman out of love and affection, which becomes her personal property.</p>
+                            </div>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Mutual Exchange:</strong> Gifts exchanged mutually between families without any coercion or demand.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Key Distinction</h3>
+                        <p>The crucial difference lies in the element of demand or expectation. If gifts are given voluntarily without any pressure, demand, or expectation from the receiving party, they do not constitute dowry under the Dowry Prohibition Act, 1961.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Government of India. All rights reserved.</p>
+        </div>
+        
+        <button class="chat-bot">
+            <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
+            <span class="material-icons-outlined">support_agent</span>
+        </button>
+        <button class="accessibility-toggle">
+            <span class="material-icons-outlined">accessibility_new</span>
+        </button>
+        <button class="color-toggle" onclick="toggleTheme()">
+            <span class="material-icons-outlined">contrast</span>
+        </button>
+    </footer>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
+        });
+        
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

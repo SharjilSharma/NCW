@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Prostitution - Empower Hub</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./content-styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png" alt="India Flag" class="flag">
+                <span>Government of India</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/45px-Emblem_of_India.svg.png" alt="Govt Emblem" class="emblem">
+                <h1>Empower Hub</h1>
+            </a>
+            <nav class="breadcrumb-nav">
+                <a href="index.html" class="breadcrumb-link">
+                    <span class="material-icons-outlined">home</span>
+                    Home
+                </a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="other-offences.html" class="breadcrumb-link">Other Offences</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="human-trafficking-main.html" class="breadcrumb-link">Human Trafficking</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">Prostitution Definition</span>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-header">
+            <div class="container">
+                <a href="human-trafficking-main.html" class="back-btn">
+                    <span class="material-icons-outlined">arrow_back</span>
+                    Back to Human Trafficking
+                </a>
+                <h1>What is Prostitution</h1>
+                <p>Legal definition under ITPA</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="content-wrapper">
+                    <div class="content-section">
+                        <h2>Legal Definition</h2>
+                        <p>Prostitution refers to the sexual exploitation or abuse of a person for commercial purposes.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>Key Elements</h2>
+                        <h3>Nature of Act</h3>
+                        <p>Sexual exploitation or abuse of a person</p>
+                        
+                        <h3>Purpose</h3>
+                        <p>For commercial purposes - involving monetary or material gain</p>
+                        
+                        <h3>Legal Context</h3>
+                        <p>This definition forms the basis for various provisions under the Immoral Traffic (Prevention) Act, 1956, which aims to prevent trafficking and exploitation.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>Important Distinction</h2>
+                        <p>The law distinguishes between:</p>
+                        <ul>
+                            <li><strong>Voluntary prostitution:</strong> Not criminalized under ITPA</li>
+                            <li><strong>Forced prostitution:</strong> Criminalized and punishable</li>
+                            <li><strong>Trafficking for prostitution:</strong> Severely punishable</li>
+                            <li><strong>Operating brothels:</strong> Prohibited and punishable</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>Legal Framework</h2>
+                        <p>The ITPA focuses on preventing the exploitation and trafficking of persons rather than criminalizing prostitution itself. The Act targets those who profit from or facilitate prostitution through coercion, deception, or exploitation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Government of India. All rights reserved.</p>
+        </div>
+        
+        <button class="chat-bot">
+            <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
+            <span class="material-icons-outlined">support_agent</span>
+        </button>
+        <button class="accessibility-toggle">
+            <span class="material-icons-outlined">accessibility_new</span>
+        </button>
+        <button class="color-toggle" onclick="toggleTheme()">
+            <span class="material-icons-outlined">contrast</span>
+        </button>
+    </footer>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
+        });
+        
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

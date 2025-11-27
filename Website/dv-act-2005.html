@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protection of Women from Domestic Violence Act, 2005 - Empower Hub</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./content-styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png" alt="India Flag" class="flag">
+                <span>Government of India</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/45px-Emblem_of_India.svg.png" alt="Govt Emblem" class="emblem">
+                <h1>Empower Hub</h1>
+            </a>
+            <nav class="breadcrumb-nav">
+                <a href="index.html" class="breadcrumb-link">
+                    <span class="material-icons-outlined">home</span>
+                    Home
+                </a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="marriage-offences.html" class="breadcrumb-link">Marriage Offences</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="domestic-violence-main.html" class="breadcrumb-link">Domestic Violence</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">DV Act 2005</span>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-header">
+            <div class="container">
+                <a href="domestic-violence-main.html" class="back-btn">
+                    <span class="material-icons-outlined">arrow_back</span>
+                    Back to Domestic Violence
+                </a>
+                <h1>Protection of Women from Domestic Violence Act, 2005</h1>
+                <p>Comprehensive law protecting women from domestic violence</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="content-wrapper">
+                    <div class="important-notice">
+                        <h3>Definition of Domestic Violence (Section 3)</h3>
+                        <p>The Protection of Women from Domestic Violence Act defines domestic violence to include the following acts:</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>1. Acts that harm, injure, or endanger women</h2>
+                        <p>Any act that harms, injures, or endangers the health, safety, life, limb, or overall well-being (whether mental or physical) of a woman. This encompasses:</p>
+                        <div class="content-list">
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Physical Abuse:</strong> Any act causing bodily harm, injury, or physical violence</p>
+                            </div>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Sexual Abuse:</strong> Any conduct of sexual nature that abuses, humiliates, degrades or violates the dignity of woman</p>
+                            </div>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Verbal and Emotional Abuse:</strong> Insults, ridicule, humiliation, name calling or intimidation specifically with regard to adequate maintenance</p>
+                            </div>
+                            <div class="list-item">
+                                <span class="bullet">•</span>
+                                <p><strong>Economic Abuse:</strong> Deprivation of all or any economic or financial resources, disposal of household effects, prohibition or restriction to continued access to resources</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>2. Harassment for dowry or property</h2>
+                        <div class="highlight-box">
+                            <p>Any harassment, harm, injury, or endangerment inflicted upon a woman with the intention of coercing her or any person related to her to meet any unlawful demand for dowry or any other property or valuable security.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Government of India. All rights reserved.</p>
+        </div>
+        
+        <button class="chat-bot">
+            <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
+            <span class="material-icons-outlined">support_agent</span>
+        </button>
+        <button class="accessibility-toggle">
+            <span class="material-icons-outlined">accessibility_new</span>
+        </button>
+        <button class="color-toggle" onclick="toggleTheme()">
+            <span class="material-icons-outlined">contrast</span>
+        </button>
+    </footer>
+
+    <div class="floating-translate-buttons">
+        <div class="translate-btn-group">
+            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
+            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
+            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
+        </div>
+        <div class="translate-label">Language</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                if (typeof translatePage === 'function') {
+                    translatePage(savedLang);
+                }
+            }, 100);
+        });
+        
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.color-toggle');
+            
+            button.style.transform = 'scale(0.9) rotate(360deg)';
+            
+            setTimeout(() => {
+                body.classList.toggle('dark-theme');
+                
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                button.style.transform = '';
+            }, 150);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
