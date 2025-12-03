@@ -2481,6 +2481,42 @@ body.dark-theme .back-btn:hover {
     cursor: not-allowed;
 }
 
+/* ======== CHATBOT STYLES ======== */
+.chat-message {
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.chat-message.user {
+    background: #0f0a40;
+    color: white;
+    margin-left: 2rem;
+    text-align: right;
+}
+
+.chat-message.bot {
+    background: #f0f0f0;
+    color: #333;
+    margin-right: 2rem;
+}
+
+.chat-message.bot strong {
+    color: #0f0a40;
+    font-weight: 600;
+}
+
+.chat-message.bot ul {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+}
+
+.chat-message.bot li {
+    margin-bottom: 0.3rem;
+}
+
 /* ======== RTL SUPPORT FOR URDU ======== */
 body.rtl {
     direction: rtl;
