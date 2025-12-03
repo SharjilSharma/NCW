@@ -1063,13 +1063,16 @@ function openCaseModal(caseId) {
     document.getElementById('modal-impact').textContent = data.impact;
     
     // Show modal
+    modal.removeAttribute('hidden');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    
 }
 
 function closeCaseModal() {
     const modal = document.getElementById('case-modal');
     modal.classList.remove('active');
+    modal.setAttribute('hidden', '');
     document.body.style.overflow = 'auto';
 }
 

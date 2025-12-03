@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('chatbot-input');
     const messages = document.getElementById('chatbot-messages');
 
-    const API_KEY = "AIzaSyChY2FwT5RTL8ci_lMBC_sLsrBV9_6Pz18"; 
+    const API_KEY = "AIzaSyAwsAk254TFsn9VCpNC8ffdGNlzxb6HrZM"; 
     const MODEL_NAME = "gemini-1.5-flash";
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
 

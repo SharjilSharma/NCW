@@ -6,6 +6,7 @@
     <title>Empower Hub</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 		/* More dropdown (dropbox) styles */
 		.more-links { position: relative; display: inline-block; margin-left: 8px; }
@@ -27,7 +28,318 @@
 
 		/* Modal overlay handling: hidden modals must not block clicks */
 		.modal-overlay[hidden] { display: none !important; pointer-events: none; }
-		.modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 13000; }
+		.modal-overlay { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 13000; background: rgba(0,0,0,0.5); }
+		.modal-overlay.active { display: flex; }
+		.modal-content { background: white; border-radius: 12px; max-width: 600px; max-height: 80vh; overflow-y: auto; margin: 20px; }
+		.modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; }
+		.modal-body { padding: 20px; }
+		.modal-header h2 { margin: 0 0 10px 0; color: #0f0a40; }
+		.modal-category { background: #e3f2fd; color: #0f0a40; padding: 4px 12px; border-radius: 20px; font-size: 14px; }
+		.modal-section { margin: 20px 0; }
+		.modal-section h3 { color: #0f0a40; margin: 0 0 10px 0; }
+		.modal-section p { line-height: 1.6; color: #333; }
+
+/* Chatbot Widget Styles */
+.chatbot-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* Chat Icon */
+.chatbot-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #0f0a40, #1a237e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(15, 10, 64, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.chatbot-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(15, 10, 64, 0.4);
+}
+
+.chatbot-icon i {
+  color: white;
+  font-size: 24px;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  background: #ff6b35;
+  border-radius: 50%;
+  border: 2px solid white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Chat Container */
+.chatbot-container {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 320px;
+  height: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.chatbot-container.active {
+  display: flex;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.chatbot-header {
+  background: linear-gradient(135deg, #0f0a40, #1a237e);
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.chatbot-title i {
+  font-size: 18px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Messages Area */
+.chatbot-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #fafafa;
+}
+
+.message {
+  margin-bottom: 12px;
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.message.bot {
+  background: white;
+  border: 1px solid #e0e0e0;
+  margin-right: auto;
+  border-bottom-left-radius: 5px;
+  color: #333;
+  font-weight: 500;
+}
+
+.message.user {
+  background: linear-gradient(135deg, #0f0a40, #1a237e);
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 5px;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  padding: 10px 15px;
+  display: none;
+}
+
+.typing-indicator.active {
+  display: block;
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    background: #ccc;
+  }
+  30% {
+    transform: translateY(-5px);
+    background: #0f0a40;
+  }
+}
+
+/* Input Area */
+.chatbot-input {
+  padding: 15px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 10px;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.chatbot-input input:focus {
+  border-color: #0f0a40;
+}
+
+.chatbot-input button {
+  background: linear-gradient(135deg, #0f0a40, #1a237e);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.chatbot-input button:hover {
+  transform: scale(1.05);
+}
+
+/* Quick Actions */
+.quick-actions {
+  padding: 10px 15px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.quick-actions button {
+  padding: 6px 12px;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #555;
+}
+
+.quick-actions button:hover {
+  background: #0f0a40;
+  color: white;
+  border-color: #0f0a40;
+}
+
+/* Scrollbar */
+.chatbot-messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background: #7986cb;
+  border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chatbot-widget {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .chatbot-container {
+    width: 300px;
+    height: 380px;
+    right: -10px;
+  }
+  
+  .chatbot-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .chatbot-icon i {
+    font-size: 20px;
+  }
+}
     </style>
     <script>
 
@@ -643,35 +955,100 @@
             </div>
         </div>
         
-        <button class="chat-bot" id="chatbot-open-btn">
-            <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
-            <span class="material-icons-outlined">support_agent</span>
-        </button>
+<!-- Chatbot Widget -->
+<div class="chatbot-widget">
+  <!-- Chat Icon -->
+  <div class="chatbot-icon" onclick="toggleChatbot()">
+    <i class="fas fa-comments"></i>
+    <span class="notification-dot"></span>
+  </div>
+  
+  <!-- Chat Window -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <!-- Header -->
+    <div class="chatbot-header">
+      <div class="chatbot-title">
+        <i class="fas fa-female"></i>
+        <span>Women's Support</span>
+      </div>
+      <button class="close-btn" onclick="toggleChatbot()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <!-- Messages Area -->
+    <div class="chatbot-messages" id="chatMessages">
+      <!-- Initial message will be added here -->
+    </div>
+    
+    <!-- Typing Indicator -->
+    <div class="typing-indicator" id="typingIndicator">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <!-- Input Area -->
+    <div class="chatbot-input">
+      <input type="text" 
+             id="chatInput" 
+             placeholder="Ask about legal rights, emergency help..." 
+             onkeypress="handleChatKeyPress(event)">
+      <button onclick="sendChatMessage()">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <button onclick="quickResponse('legal')">Legal Help</button>
+      <button onclick="quickResponse('emergency')">Emergency</button>
+      <button onclick="quickResponse('health')">Health</button>
+    </div>
+  </div>
+</div>
     </footer>
 
-    <!-- Chatbot Window -->
-    <div id="chatbot-window" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); z-index: 100000; flex-direction: column;">
-        <div style="background: #0f0a40; color: white; padding: 1rem; border-radius: 12px 12px 0 0; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <h3 style="margin: 0; font-size: 1rem;">NCW Sahayata Bot</h3>
-                <p style="margin: 0; font-size: 0.8rem; opacity: 0.8;">Women's Rights Assistant</p>
+<!-- Case Modal -->
+<div id="case-modal" class="modal-overlay" hidden>
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeCaseModal()">
+            <span class="material-icons-outlined">close</span>
+        </button>
+        <div class="modal-body">
+            <div class="modal-header">
+                <h2 id="modal-case-title"></h2>
+                <span id="modal-case-category" class="modal-category"></span>
             </div>
-            <button id="chatbot-close-btn" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.5rem;">&times;</button>
-        </div>
-        <div id="chatbot-messages" style="flex: 1; padding: 1rem; overflow-y: auto; max-height: 350px;">
-            <div class="chat-message bot" style="background: #f0f0f0; padding: 0.8rem; border-radius: 8px; margin-bottom: 0.5rem; font-size: 0.9rem;">
-                Hello! I'm here to help with women's rights and legal questions. Are you in immediate danger?
-                <div class="chat-options" style="margin-top: 0.5rem;">
-                    <button class="chat-option" data-value="danger_yes" style="background: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; margin-right: 0.5rem; cursor: pointer; font-size: 0.8rem;">Yes, I'm in danger</button>
-                    <button class="chat-option" data-value="danger_no" style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">No, I need advice</button>
+            <div class="modal-sections">
+                <div class="modal-section">
+                    <h3>Case Summary</h3>
+                    <p id="modal-summary"></p>
+                </div>
+                <div class="modal-section">
+                    <h3>Background</h3>
+                    <p id="modal-background"></p>
+                </div>
+                <div class="modal-section">
+                    <h3>What She Was Suffering</h3>
+                    <p id="modal-suffering"></p>
+                </div>
+                <div class="modal-section">
+                    <h3>What She Did</h3>
+                    <p id="modal-action"></p>
+                </div>
+                <div class="modal-section">
+                    <h3>Court's Judgement</h3>
+                    <p id="modal-judgment"></p>
+                </div>
+                <div class="modal-section">
+                    <h3>How This Case Helps Today</h3>
+                    <p id="modal-impact"></p>
                 </div>
             </div>
         </div>
-        <div style="padding: 1rem; border-top: 1px solid #eee; display: flex; gap: 0.5rem;">
-            <input id="chatbot-input" type="text" placeholder="Type your message..." style="flex: 1; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem;">
-            <button id="chatbot-send-btn" style="background: #0f0a40; color: white; border: none; padding: 0.8rem 1rem; border-radius: 6px; cursor: pointer;">Send</button>
-        </div>
     </div>
+</div>
 
     <script>
         // Prevent font size glitch on page load
@@ -756,7 +1133,321 @@
         }
     </script>
     <script src="script.js"></script>
-    <script src="chatbot.js"></script>
+    <script>
+// Case Data
+const caseData = {
+  'shah-bano': {
+    title: 'Shah Bano Case',
+    category: 'Maintenance after divorce',
+    summary: 'Shah Bano, a 62-year-old woman, was divorced via instant Triple Talaq after decades of marriage. Left with no financial support, she approached court seeking maintenance under Section 125 CrPC, applicable to all wives unable to maintain themselves.',
+    background: 'Elderly woman abandoned after decades of marriage. Fully financially dependent on husband. Divorced instantly without support. No livelihood or savings.',
+    suffering: 'Total financial insecurity. No money for food, rent, or healthcare. Social isolation and emotional trauma. Fear of survival in old age.',
+    action: 'Filed a maintenance petition under CrPC 125. Challenged husband\'s refusal based on personal law. Pursued the case through multiple courts up to the Supreme Court.',
+    judgment: 'Supreme Court ruled: CrPC 125 applies to all women, regardless of religion. Husband MUST pay maintenance if wife cannot maintain herself. Personal laws cannot override constitutional protections.',
+    impact: 'Any woman—of any religion—abandoned after divorce can: File under CrPC 125 for monthly maintenance. Seek free help from legal aid services. Obtain court-ordered financial support based on husband\'s income.'
+  },
+  'danial-latifi': {
+    title: 'Danial Latifi vs Union of India',
+    category: 'Long-term financial support',
+    summary: 'After the Shah Bano backlash, the govt passed Muslim Women Act (1986). It was misinterpreted to limit maintenance to iddat (3 months). Lawyer Danial Latifi challenged this before the Supreme Court.',
+    background: 'Act seemed to weaken rights of divorced Muslim women. Many women were getting only 3 months\' worth of support. Increased poverty and vulnerability.',
+    suffering: 'No long-term financial security. Forced dependence on family or remarriage. Poverty after iddat. No stable support for children.',
+    action: 'Law challenged by women\'s rights advocates. Petition filed to ensure constitutional interpretation.',
+    judgment: 'Supreme Court ruled: Husband must make a "fair and reasonable provision" for wife\'s ENTIRE FUTURE. Payment may be lump-sum or long-term. 1986 Act must be read in line with constitutional protections.',
+    impact: 'A divorced Muslim woman can demand: Major long-term financial settlement. Protection from poverty after divorce.'
+  },
+  'shamim-ara': {
+    title: 'Shamim Ara vs State of UP',
+    category: 'Validity of talaq',
+    summary: 'Her husband claimed he divorced her years ago using oral talaq but produced no proof. She challenged this fake divorce claim.',
+    background: 'Husband fabricated date of divorce. No written proof or witnesses. Used false talaq claim to deny rights.',
+    suffering: 'Sudden abandonment. No maintenance. Social pressure and uncertainty. Mental harassment.',
+    action: 'Took the case to court. Demanded procedural requirements for talaq.',
+    judgment: 'Supreme Court ruled: Talaq MUST follow Quranic procedure. Husband must show: 1. Reasonable cause. 2. Proof of talaq. 3. Attempt at reconciliation. Unsupported talaq claims are INVALID.',
+    impact: 'Women can challenge: Fake talaq claims. Undocumented verbal talaq. Forced or manipulated divorces.'
+  },
+  'shayara-bano': {
+    title: 'Shayara Bano vs Union of India',
+    category: 'Instant Triple Talaq',
+    summary: 'Shayara Bano was divorced through instantaneous Triple Talaq, losing her marriage and security instantly. She challenged its constitutionality.',
+    background: 'Married for years. Husband divorced her suddenly via letter. No chance for reconciliation or response.',
+    suffering: 'Shock and emotional trauma. Financial insecurity. Social stigma and humiliation. Loss of marital rights without process.',
+    action: 'Filed petition before a Constitutional Bench. Claimed talaq-e-biddat violates Articles 14 & 21.',
+    judgment: 'Instant Triple Talaq is unconstitutional. Violates dignity, equality, and due process. Not essential to Islam.',
+    impact: 'If husband attempts instant Triple Talaq: It is illegal. She can file FIR under 2019 Act. Husband can face 3 years of imprisonment.'
+  },
+  'zunaideen': {
+    title: 'K. Zunaideen vs Ameena Begum',
+    category: 'Talaq in anger',
+    summary: 'Husband pronounced talaq in anger during a fight. Wife challenged its validity.',
+    background: 'Frequent disputes. Husband emotionally unstable. No attempt at reconciliation.',
+    suffering: 'Emotional abuse. Sudden marital breakup. No financial stability. Lack of clarity about marriage status.',
+    action: 'Filed legal challenge. Argued that talaq violated procedure.',
+    judgment: 'Court held: Talaq in anger is not valid. Divorce must be thoughtful, deliberate, and follow set steps.',
+    impact: 'A woman can challenge: Emotional, impulsive talaq. Divorce pronounced during fights.'
+  },
+  'hina': {
+    title: 'Hina Case',
+    category: 'Illegal Triple Talaq',
+    summary: 'Hina\'s husband attempted instant Triple Talaq even after the 2019 Act banned it.',
+    background: 'Husband repeatedly threatened talaq. Emotional blackmail. Continued illegal practice.',
+    suffering: 'Fear of illegal divorce. Domestic harassment. No stability for children.',
+    action: 'Filed FIR under Triple Talaq (2019) Act.',
+    judgment: 'Husband arrested. Case registered. Provided safety to woman.',
+    impact: 'Women can immediately: File FIR. Seek police protection. Stop illegal divorce attempts.'
+  },
+  'vishaka': {
+    title: 'Vishaka vs State of Rajasthan',
+    category: 'Workplace harassment',
+    summary: 'Filed after social worker Bhanwari Devi was assaulted for preventing child marriage.',
+    background: 'No workplace harassment law existed. Women unsafe in field jobs.',
+    suffering: 'Assault. Social pressure. Trauma and injustice.',
+    action: 'Women\'s groups filed PIL demanding protection.',
+    judgment: 'Supreme Court created Vishaka Guidelines: Mandatory internal complaint committees. Employer responsibility for safety.',
+    impact: 'Women can complain under POSH Act in ANY workplace (schools, colleges, offices).'
+  },
+  'laxmi': {
+    title: 'Laxmi vs Union of India',
+    category: 'Acid attacks',
+    summary: 'Teenager Laxmi survived an acid attack and filed PIL demanding stricter laws.',
+    background: 'Acid was sold freely to anyone. Attackers faced weak punishment.',
+    suffering: 'Permanent injuries. Psychological trauma. Expensive medical operations.',
+    action: 'Filed PIL to regulate acid sales.',
+    judgment: 'Acid cannot be sold without ID. Stronger punishments introduced. Victims must receive compensation.',
+    impact: 'Acid buyers must provide ID. Police must act immediately on complaints.'
+  },
+  'nirbhaya': {
+    title: 'Nirbhaya Case',
+    category: 'Sexual violence',
+    summary: 'A young woman was brutally assaulted in Delhi, triggering nationwide protests.',
+    background: 'Lack of fast police response. Weak sexual assault laws.',
+    suffering: 'Life-threatening injuries. Emotional and physical trauma. National outrage.',
+    action: 'Fast-track court trial. Justice Verma Committee formed.',
+    judgment: 'Death penalty for convicts. Stronger rape laws created.',
+    impact: 'Women now have: Faster trials. Harsher punishments for offenders. Protection against stalking & voyeurism.'
+  }
+};
+
+// Open case modal
+function openCaseModal(caseId) {
+  const caseInfo = caseData[caseId];
+  if (!caseInfo) return;
+  
+  document.getElementById('modal-case-title').textContent = caseInfo.title;
+  document.getElementById('modal-case-category').textContent = caseInfo.category;
+  document.getElementById('modal-summary').textContent = caseInfo.summary;
+  document.getElementById('modal-background').textContent = caseInfo.background;
+  document.getElementById('modal-suffering').textContent = caseInfo.suffering;
+  document.getElementById('modal-action').textContent = caseInfo.action;
+  document.getElementById('modal-judgment').textContent = caseInfo.judgment;
+  document.getElementById('modal-impact').textContent = caseInfo.impact;
+  
+  const modal = document.getElementById('case-modal');
+  modal.removeAttribute('hidden');
+  modal.classList.add('active');
+}
+
+// Close case modal
+function closeCaseModal() {
+  const modal = document.getElementById('case-modal');
+  modal.setAttribute('hidden', '');
+  modal.classList.remove('active');
+}
+
+// Close modal on outside click
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('modal-overlay')) {
+    closeCaseModal();
+  }
+});
+
+    <script>
+// Chatbot Configuration
+const chatbotResponses = {
+  greeting: [
+    "Hello! I'm here to help with women's rights and support information. How can I assist you today? 💜",
+    "Hi there! I can provide information about legal rights, emergency contacts, health resources, and safety tips. What do you need help with?"
+  ],
+  
+  legal: [
+    "**Legal Rights Summary:**\n\n• Protection from Domestic Violence (PWDV Act)\n• Workplace Safety & POSH Act\n• Maternity Benefits\n• Dowry Prohibition\n• Right to Maintenance\n\nWhich specific area would you like to know more about?",
+    "Based on your platform content:\n\n1. **Constitutional Rights:** Articles 14, 15, 16 guarantee equality\n2. **POSH Act:** Protection from workplace harassment\n3. **DV Act:** Protection from domestic violence\n4. **Maternity Benefits:** Paid leave and job protection\n5. **PCPNDT Act:** Against sex determination"
+  ],
+  
+  emergency: [
+    "**🚨 Emergency Contacts:**\n\n• Police: 100\n• Women Helpline: 1091\n• National Commission for Women: 011-26944880\n• Medical: 108\n• Domestic Violence: 181\n\nFor immediate danger, call the nearest police station!",
+    "**Immediate Help Options:**\n\n1. File FIR at police station\n2. Contact Protection Officer\n3. Approach District Magistrate\n4. Reach women's shelter\n5. Call legal aid services\n\nAll services are FREE and confidential."
+  ],
+  
+  health: [
+    "**Health Support Available:**\n\n• Free medical checkups at government hospitals\n• Mental health counseling\n• Reproductive health services\n• Nutrition guidance\n• Maternity care\n\nVisit your nearest government hospital for assistance.",
+    "**Healthcare Rights:**\n\n1. Free treatment in government hospitals\n2. Maternity benefits including prenatal care\n3. Mental health support\n4. Sexual and reproductive health services\n5. HIV/AIDS prevention and treatment"
+  ],
+  
+  general: [
+    "I can help you with:\n\n• Legal rights information\n• Emergency procedures\n• Health resources\n• Filing complaints\n• Support services\n\nPlease ask about a specific topic or use the quick buttons below.",
+    "You can ask me about:\n\n- How to file a police complaint\n- Legal rights under various acts\n- Emergency contact numbers\n- Healthcare facilities\n- Safety guidelines\n\nOr click the quick action buttons for immediate topics."
+  ]
+};
+
+// Chatbot State
+let isChatOpen = false;
+let chatHistory = [];
+
+// Initialize chatbot
+function initChatbot() {
+  addBotMessage(getRandomResponse('greeting'));
+}
+
+// Toggle chatbot visibility
+function toggleChatbot() {
+  const container = document.getElementById('chatbotContainer');
+  isChatOpen = !isChatOpen;
+  
+  if (isChatOpen) {
+    container.classList.add('active');
+    document.getElementById('chatInput').focus();
+  } else {
+    container.classList.remove('active');
+  }
+}
+
+// Add message to chat
+function addMessage(text, sender) {
+  const messagesDiv = document.getElementById('chatMessages');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${sender}`;
+  
+  if (sender === 'bot') {
+    messageDiv.innerHTML = formatBotMessage(text);
+  } else {
+    messageDiv.textContent = text;
+  }
+  
+  messagesDiv.appendChild(messageDiv);
+  
+  // Scroll to bottom
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  
+  // Save to history
+  chatHistory.push({text, sender, time: new Date()});
+  
+  // Keep only last 50 messages
+  if (chatHistory.length > 50) {
+    chatHistory = chatHistory.slice(-50);
+  }
+}
+
+// Add bot message
+function addBotMessage(text) {
+  addMessage(text, 'bot');
+}
+
+// Add user message
+function addUserMessage(text) {
+  addMessage(text, 'user');
+}
+
+// Send message function
+function sendChatMessage() {
+  const input = document.getElementById('chatInput');
+  const message = input.value.trim();
+  
+  if (!message) return;
+  
+  // Add user message
+  addUserMessage(message);
+  input.value = '';
+  
+  // Show typing indicator
+  showTyping(true);
+  
+  // Process after delay
+  setTimeout(() => {
+    processMessage(message);
+    showTyping(false);
+  }, 800);
+}
+
+// Process user message
+function processMessage(message) {
+  const lowerMsg = message.toLowerCase();
+  let response = '';
+  
+  if (lowerMsg.includes('hello') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
+    response = getRandomResponse('greeting');
+  } 
+  else if (lowerMsg.includes('legal') || lowerMsg.includes('right') || lowerMsg.includes('law')) {
+    response = getRandomResponse('legal');
+  }
+  else if (lowerMsg.includes('emergency') || lowerMsg.includes('urgent') || lowerMsg.includes('help')) {
+    response = getRandomResponse('emergency');
+  }
+  else if (lowerMsg.includes('health') || lowerMsg.includes('medical') || lowerMsg.includes('doctor')) {
+    response = getRandomResponse('health');
+  }
+  else if (lowerMsg.includes('thank') || lowerMsg.includes('thanks')) {
+    response = "You're welcome! Stay safe and empowered. Reach out anytime you need help. 💜";
+  }
+  else if (lowerMsg.includes('bye') || lowerMsg.includes('goodbye')) {
+    response = "Goodbye! Remember, help is always available. Take care!";
+  }
+  else {
+    response = getRandomResponse('general');
+  }
+  
+  addBotMessage(response);
+}
+
+// Quick response buttons
+function quickResponse(type) {
+  const messages = {
+    legal: "Tell me about legal rights",
+    emergency: "I need emergency contacts",
+    health: "Health resources information"
+  };
+  
+  document.getElementById('chatInput').value = messages[type];
+  sendChatMessage();
+}
+
+// Show/hide typing indicator
+function showTyping(show) {
+  const indicator = document.getElementById('typingIndicator');
+  indicator.classList.toggle('active', show);
+  
+  if (show) {
+    const messagesDiv = document.getElementById('chatMessages');
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+}
+
+// Handle Enter key press
+function handleChatKeyPress(event) {
+  if (event.key === 'Enter') {
+    sendChatMessage();
+  }
+}
+
+// Format bot messages for better readability
+function formatBotMessage(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n\n/g, '<br><br>')
+    .replace(/\n/g, '<br>')
+    .replace(/•/g, '&bull;')
+    .replace(/\d+\./g, '<strong>$&</strong>');
+}
+
+// Get random response from category
+function getRandomResponse(category) {
+  const responses = chatbotResponses[category];
+  return responses[Math.floor(Math.random() * responses.length)];
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initChatbot);
+    </script>
     <!-- add robust smooth offset scroll helper -->
 <script>
 /* filepath: d:\Desktop\NCW\NCW.Lakshay\Website\index.html (injected script) */
