@@ -18,9 +18,10 @@
 		body.dark-theme .more-dropdown button:hover { background: rgba(255,255,255,0.04); }
 
 		/* nav click fixes: ensure header nav is above overlays and receives pointer events */
-		.top-bar { position: relative; z-index: 11000; }
-		.main-header { position: relative; z-index: 12000; }
+		.top-bar { position: relative; z-index: 15000; }
+		.main-header { position: relative; z-index: 10000; }
 		.main-nav a { cursor: pointer; pointer-events: auto; }
+		.language-dropdown { position: absolute !important; z-index: 16000 !important; }
 		/* if hero background overlays elements, prevent it intercepting clicks */
 		.hero-background { pointer-events: none; }
 
