@@ -6,6 +6,28 @@
     <title>Empower Hub</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <style>
+		/* More dropdown (dropbox) styles */
+		.more-links { position: relative; display: inline-block; margin-left: 8px; }
+		.more-btn { background: none; border: none; color: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 6px; }
+		.more-dropdown { position: absolute; top: calc(100% + 8px); right: 0; min-width: 180px; background: #fff; border: 1px solid #ddd; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-radius: 6px; padding: 6px 0; z-index: 1000; }
+		.more-dropdown[hidden] { display: none; }
+		.more-dropdown button { width: 100%; text-align: left; padding: 10px 14px; border: none; background: transparent; cursor: pointer; font: inherit; }
+		.more-dropdown button:hover { background: #f5f5f5; }
+		body.dark-theme .more-dropdown { background: #1f1f1f; color: #eaeaea; border-color: #333; }
+		body.dark-theme .more-dropdown button:hover { background: rgba(255,255,255,0.04); }
+
+		/* nav click fixes: ensure header nav is above overlays and receives pointer events */
+		.top-bar { position: relative; z-index: 11000; }
+		.main-header { position: relative; z-index: 12000; }
+		.main-nav a { cursor: pointer; pointer-events: auto; }
+		/* if hero background overlays elements, prevent it intercepting clicks */
+		.hero-background { pointer-events: none; }
+
+		/* Modal overlay handling: hidden modals must not block clicks */
+		.modal-overlay[hidden] { display: none !important; pointer-events: none; }
+		.modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 13000; }
+    </style>
     <script>
 
         function translatePage(lang) {
@@ -23,6 +45,27 @@
             }
             localStorage.setItem('selectedLanguage', lang);
         }
+
+		/* small global helper used by nav onclicks — scrolls with header offset */
+		function navigateTo(hash) {
+			try {
+				const topBar = document.querySelector('.top-bar');
+				const header = document.querySelector('.main-header');
+				let offset = 8;
+				if (topBar) offset += topBar.getBoundingClientRect().height;
+				if (header) offset += header.getBoundingClientRect().height;
+				const id = (hash || '').replace(/^#/, '');
+				const el = document.getElementById(id);
+				if (!el) return true; // fallback to native behavior if not found
+				const y = el.getBoundingClientRect().top + window.pageYOffset - Math.round(offset);
+				window.scrollTo({ top: Math.max(0, Math.floor(y)), behavior: 'smooth' });
+				// update URL without jump
+				history.replaceState(null, '', '#' + id);
+				return false;
+			} catch (err) {
+				return true;
+			}
+		}
     </script>
 </head>
 <body>
@@ -49,9 +92,16 @@
                         <a href="#" onclick="changeLanguage('ur'); return false;">اردو</a>
                     </div>
                 </div>
-                <div class="more-links">
-                    <span class="material-icons-outlined">more_vert</span>
-                    <span>More</span>
+                <!-- More dropdown moved to top-bar, immediately to the right of language -->
+                <div class="more-links" id="more-links">
+                    <button class="more-btn" id="more-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleMoreDropdown(event)">
+                        <span class="material-icons-outlined">more_vert</span>
+                        <span>More</span>
+                    </button>
+                    <div class="more-dropdown" id="more-dropdown" role="menu" hidden>
+                        <button type="button" role="menuitem" onclick="toggleTheme(); closeMoreDropdown();">Toggle Theme</button>
+                        <button type="button" role="menuitem" onclick="toggleAccessibility(); closeMoreDropdown();">Accessibility</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,11 +115,11 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#main" data-translate="Home">Home</a></li>
-                    <li><a href="#about" data-translate="About Us">About Us</a></li>
-                    <li><a href="#services" data-translate="Services">Services</a></li>
-                    <li><a href="#popular-cases" data-translate="Popular Cases">Popular Cases</a></li>
-                    <li><a href="#how-it-works" data-translate="How it Works">How it Works</a></li>
+                    <li><a href="#main" data-translate="Home" onclick="return navigateTo('#main')">Home</a></li>
+                    <li><a href="#about" data-translate="About Us" onclick="return navigateTo('#about')">About Us</a></li>
+                    <li><a href="#services" data-translate="Services" onclick="return navigateTo('#services')">Services</a></li>
+                    <li><a href="#popular-cases" data-translate="Popular Cases" onclick="return navigateTo('#popular-cases')">Popular Cases</a></li>
+                    <li><a href="#faq" data-translate="How it Works" onclick="return navigateTo('#faq')">How it Works</a></li>
                 </ul>
             </nav>
             <div class="header-right">
@@ -80,6 +130,7 @@
                         <span class="material-icons-outlined">search</span>
                     </button>
                 </div>
+                <!-- more-links removed from header-right (now in top-bar) -->
             </div>
         </div>
     </header>
@@ -96,62 +147,7 @@
                     <h1 data-translate="Future">Future</h1>
                 </div>
                 
-                <div class="info-box">
-                    <div class="info-tabs">
-                        <button class="tab-link active" data-tab="whats-new" data-translate="What's new">What's new</button>
-                        <button class="tab-link" data-tab="important-info" data-translate="Important information">Important information</button>
-                    </div>
-                    
-                    <div id="whats-new" class="tab-content active">
-                        <ul>
-                            <li>
-                                <div class="item-text">
-                                    <p data-translate="Description of what's new 2 goes here.">Description of what's new 2 goes here.</p>
-                                    <span>DD/MM/YYYY</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-text">
-                                    <p data-translate="Description of what's new 2 goes here.">Description of what's new 2 goes here.</p>
-                                    <span>DD/MM/YYYY</span>
-                                </div>
-                                <span class="doc-type" data-translate="Document Type">Document Type</span>
-                            </li>
-                            <li>
-                                <div class="item-text">
-                                    <p data-translate="Description of what's new 2 goes here.">Description of what's new 2 goes here.</p>
-                                    <span>DD/MM/YYYY</span>
-                                </div>
-                                <span class="doc-type" data-translate="Document Type">Document Type</span>
-                            </li>
-                            <li>
-                                <div class="item-text">
-                                    <p data-translate="Description of what's new 2 goes here.">Description of what's new 2 goes here.</p>
-                                    <span>12/09/2023</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <a href="#" class="view-all" data-translate="View All">View All</a>
-                    </div>
-
-                    <div id="important-info" class="tab-content">
-                        <ul>
-                            <li>
-                                <div class="item-text">
-                                    <p data-translate="Important information 1 goes here.">Important information 1 goes here.</p>
-                                    <span>DD/MM/YYYY</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-text">
-                                    <p data-translate="Important information 2 goes here.">Important information 2 goes here.</p>
-                                    <span>DD/MM/YYYY</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <a href="#" class="view-all" data-translate="View All">View All</a>
-                    </div>
-                </div>
+                <!-- info-box removed -->
             </div>
             <div class="explore-btn-container">
                 <a href="#services" class="explore-btn" data-translate="Explore">Explore</a>
@@ -480,53 +476,6 @@
         </div>
     </section>
 
-    <section id="how-it-works" class="how-it-works-section">
-        <div class="container-small">
-            <div class="section-header">
-                <h2>How It Works</h2>
-            </div>
-            
-            <div class="how-it-works-timeline">
-                <div class="timeline-dot"></div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-line"></div>
-            </div>
-
-            <div class="how-it-works-grid">
-                <div class="step-card">
-                    <div class="step-icon">
-                        <span class="material-icons-outlined">person_search</span>
-                    </div>
-                    <h3>Heading 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon">
-                        <span class="material-icons-outlined">travel_explore</span>
-                    </div>
-                    <h3>Heading 2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon">
-                        <span class="material-icons-outlined">task_alt</span>
-                    </div>
-                    <h3>Heading 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon">
-                        <span class="material-icons-outlined">receipt_long</span>
-                    </div>
-                    <h3>Heading 4</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="faq" class="faq-section">
         <div class="container-small">
             <div class="faq-header">
@@ -697,24 +646,7 @@
             <span class="tooltip">Hi! I am MeghLeo. Ask Me Anything!</span>
             <span class="material-icons-outlined">support_agent</span>
         </button>
-        <button class="accessibility-toggle">
-            <span class="material-icons-outlined">accessibility_new</span>
-        </button>
-         <button class="color-toggle" onclick="toggleTheme()">
-            <span class="material-icons-outlined">contrast</span>
-        </button>
-
     </footer>
-
-    <div class="floating-translate-buttons">
-        <div class="translate-btn-group">
-            <button class="translate-btn translate-btn-en" onclick="translatePage('en')" title="English" style="opacity: 1; transform: scale(1.1);">EN</button>
-            <button class="translate-btn translate-btn-hi" onclick="translatePage('hi')" title="हिंदी" style="opacity: 0.7; transform: scale(1);">हि</button>
-            <button class="translate-btn translate-btn-ur" onclick="translatePage('ur')" title="اردو" style="opacity: 0.7; transform: scale(1);">اُر</button>
-        </div>
-        <div class="translate-label">Language</div>
-    </div>
-
 
     <script>
         // Prevent font size glitch on page load
@@ -723,6 +655,11 @@
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
+            }
+            // Load saved accessibility state
+            const savedAccessibility = localStorage.getItem('accessibility');
+            if (savedAccessibility === 'on') {
+                document.body.classList.add('accessibility-mode');
             }
             
             // Load saved language after script.js loads
@@ -738,7 +675,8 @@
             const body = document.body;
             const button = document.querySelector('.color-toggle');
             
-            button.style.transform = 'scale(0.9) rotate(360deg)';
+            // If dropdown invoked this and button doesn't exist, skip transform
+            if (button) button.style.transform = 'scale(0.9) rotate(360deg)';
             
             setTimeout(() => {
                 body.classList.toggle('dark-theme');
@@ -749,15 +687,120 @@
                     localStorage.setItem('theme', 'light');
                 }
                 
-                button.style.transform = '';
+                if (button) button.style.transform = '';
             }, 150);
+        }
+        
+        // Accessibility toggle: add/remove 'accessibility-mode' class and persist
+        function toggleAccessibility() {
+            const body = document.body;
+            body.classList.toggle('accessibility-mode');
+            const enabled = body.classList.contains('accessibility-mode');
+            localStorage.setItem('accessibility', enabled ? 'on' : 'off');
+        }
+        
+        // More dropdown helpers
+        function toggleMoreDropdown(event) {
+            event.stopPropagation();
+            const dd = document.getElementById('more-dropdown');
+            const btn = document.getElementById('more-btn');
+            const isHidden = dd.hasAttribute('hidden');
+            if (isHidden) {
+                dd.removeAttribute('hidden');
+                btn.setAttribute('aria-expanded', 'true');
+                // close on outside click
+                document.addEventListener('click', closeMoreDropdownOnDoc);
+            } else {
+                closeMoreDropdown();
+            }
+        }
+        
+        function closeMoreDropdown() {
+            const dd = document.getElementById('more-dropdown');
+            const btn = document.getElementById('more-btn');
+            if (dd && !dd.hasAttribute('hidden')) {
+                dd.setAttribute('hidden', '');
+                btn.setAttribute('aria-expanded', 'false');
+                document.removeEventListener('click', closeMoreDropdownOnDoc);
+            }
+        }
+        
+        function closeMoreDropdownOnDoc(e) {
+            const wrapper = document.getElementById('more-links');
+            if (!wrapper.contains(e.target)) closeMoreDropdown();
         }
     </script>
     <script src="script.js"></script>
-</body>
-</html>
-    <!-- Case Modal -->
-    <div id="case-modal" class="modal-overlay">
+    <!-- add robust smooth offset scroll helper -->
+<script>
+/* filepath: d:\Desktop\NCW\NCW.Lakshay\Website\index.html (injected script) */
+(function(){
+	const headerSelector = '.main-header';
+	const topBarSelector = '.top-bar';
+
+	function getHeaderOffset() {
+		let offset = 0;
+		const topBar = document.querySelector(topBarSelector);
+		const header = document.querySelector(headerSelector);
+		if (topBar) offset += topBar.getBoundingClientRect().height;
+		if (header) offset += header.getBoundingClientRect().height;
+		return Math.round(offset) + 8;
+	}
+
+	function scrollToId(id, updateHash = true) {
+		const el = document.getElementById(id.replace(/^#/,''));
+		if (!el) return false;
+		const y = el.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset();
+		window.scrollTo({ top: Math.max(0, Math.floor(y)), behavior: 'smooth' });
+		if (updateHash) history.replaceState(null, '', id);
+		return true;
+	}
+
+	// Primary: attach capture-phase listeners to header nav and top-bar skip link so clicks are handled before other handlers
+	function bindNavAnchors() {
+		const selectors = [
+			'.main-nav a',           // main navigation
+			'.top-bar .skip-link',   // skip-to content
+			'.explore-btn',          // hero explore button
+			'.more-dropdown a'       // any drop-down links if present
+		];
+		const nodes = document.querySelectorAll(selectors.join(','));
+		nodes.forEach(a => {
+			// use capture to ensure we handle before other scripts
+			a.addEventListener('click', function(e){
+				const href = (a.getAttribute('href') || '').trim();
+				if (!href || !href.startsWith('#') || href === '#') return;
+				if (scrollToId(href, true)) {
+					e.preventDefault();
+					// close more-dropdown if open (optional)
+					try { closeMoreDropdown(); } catch (err) {}
+				}
+			}, { capture: true });
+		});
+	}
+
+	// fallback: also intercept any remaining anchor clicks on the document
+	document.addEventListener('click', function(e){
+		const a = e.target.closest('a');
+		if (!a) return;
+		const href = (a.getAttribute('href') || '').trim();
+		if (!href.startsWith('#') || href === '#') return;
+		// only attempt if target exists
+		if (scrollToId(href, true)) e.preventDefault();
+	}, { passive: true });
+
+	// initialize
+	document.addEventListener('DOMContentLoaded', function(){
+		bindNavAnchors();
+		// if a hash exists on load, scroll to it with offset
+		if (location.hash && location.hash.length > 1) {
+			setTimeout(() => scrollToId(location.hash, false), 50);
+		}
+	});
+})();
+</script>
+<!-- Case Modal -->
+    <div id="case-modal" class="modal-overlay" hidden>
         <div class="modal-content">
             <button class="modal-close" onclick="closeCaseModal()">
                 <span class="material-icons-outlined">close</span>
