@@ -1992,7 +1992,7 @@ body.dark-theme .back-btn:hover {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 9999;
+    z-index: 999999 !important;
     min-width: 120px;
 }
 
@@ -2019,7 +2019,7 @@ body.dark-theme .back-btn:hover {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 9999;
+    z-index: 999999 !important;
     min-width: 120px;
     margin-top: 5px;
 }

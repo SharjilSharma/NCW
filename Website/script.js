@@ -298,6 +298,8 @@ const translations = {
         'Sexual Offences Against Women': 'خواتین کے خلاف جنسی جرائم',
         'Offences Related to Marriage': 'شادی سے متعلق جرائم',
         'Cyber Crimes Against Women': 'خواتین کے خلاف سائبر جرائم',
+        'Women Rights under Bharatiya Nyaya Suraksha Sanhita': 'بھارتیہ نیایا سرکشا سنہتا کے تحت خواتین کے حقوق',
+        'Other Offences Relating to Women': 'خواتین سے متعلق دیگر جرائم',
         'Emergency Support & Helplines': 'ایمرجنسی سپورٹ اور ہیلپ لائنز',
         
         // Popular Cases
