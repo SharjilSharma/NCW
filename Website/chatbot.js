@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('chatbot-send-btn');
     const input = document.getElementById('chatbot-input');
     const messages = document.getElementById('chatbot-messages');
-
+    // Read whole.
     // --- 2. Gemini API Configuration ---
     // WARNING: Your API key is visible here.
     // For a real website, you should hide this on a server.
